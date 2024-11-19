@@ -9,7 +9,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Production",
       template: "./src/html/template.html",
-      filename: "main.html",
     }),
   ],
   output: {
