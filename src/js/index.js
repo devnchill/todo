@@ -1,1 +1,2 @@
-console.log("HELLO WORLD")
+import "./addTodo";
+console.log("HELLO WORLD");
