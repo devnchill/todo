@@ -9,11 +9,11 @@ class Todo {
     this.checklist = false;
   }
 
-  get changePriority() {
+  get newPriority() {
     return this.priority;
   }
 
-  set changePriority(param) {
+  set newPriority(param) {
     this.priority = param;
   }
 
