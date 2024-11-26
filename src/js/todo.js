@@ -9,11 +9,16 @@ class Todo {
     this.checklist = false;
   }
 
-  get toggleComplete() {
-    this.checklist;
+  get changePriority() {
+    return this.priority;
   }
-  set toggleComplete(checklist) {
-    this.checklist = !checklist;
+
+  set changePriority(param) {
+    this.priority = param;
+  }
+
+  toggleComplete() {
+    this.checklist = !this.checklist;
   }
 }
 export { Todo };
