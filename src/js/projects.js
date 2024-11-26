@@ -43,10 +43,22 @@ const project = (function () {
     }
   }
 
+  function deleteTodo(tid) {
+    allProjects.forEach((project) => {
+      const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
+      if (todoIndex !== -1) {
+        project.todos.splice(todoIndex, 1);
+      } else {
+        console.log("Todo not found");
+      }
+    });
+  }
+
   return {
     createNewProject,
     addTodoToDefaultProject,
     addTodoToNewProject,
     allProjects,
+    deleteTodo,
   };
 })();
