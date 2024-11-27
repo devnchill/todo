@@ -7,7 +7,7 @@ const dom = (function () {
   const clearMain = function () {
     Main.innerHTML = "";
   };
-  const dispalyAllProjects = () => {
+  const displayAllProjects = () => {
     const allProject = project.allProjects;
     allProject.forEach((item) => {
       const projectDiv = createCustomElement("div", item.pid, item.name, [
@@ -31,12 +31,22 @@ const dom = (function () {
   };
 
   const displayTodoOfClickedProject = function (pid) {
-    const clickedProject = project.allProjects.find((item) => item.pid === pid);
+    clearMain();
+    const clickedProject = project.allProjects.find(
+      (item) => item.pid === parseInt(pid),
+    );
+    clickedProject.todos.forEach((todo) => {
+      const todoDiv = createCustomElement("div", todo.tid, todo.title, [
+        "todo",
+        "specific-project-todo",
+      ]);
+      Main.appendChild(todoDiv);
+    });
   };
 
   return {
     clearMain,
-    dispalyAllProjects,
+    displayAllProjects,
     displayAllTodos,
     displayTodoOfClickedProject,
   };
