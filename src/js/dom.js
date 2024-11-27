@@ -8,10 +8,10 @@ const dom = (function () {
     Main.innerHTML = "";
   };
   const displayAllProjects = () => {
-    const allProject = project.allProjects;
-    allProject.forEach((item) => {
+    const allProjects = project.allProjects;
+    allProjects.forEach((item) => {
       const projectDiv = createCustomElement("div", item.pid, item.name, [
-        "projects",
+        "individualProject",
       ]);
       projectContainer.appendChild(projectDiv);
     });

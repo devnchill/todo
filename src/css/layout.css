@@ -55,14 +55,14 @@ main {
   gap: var(--standard-space);
   align-content: start;
 }
-.projects {
+.individualProject {
   cursor: pointer;
   color: white;
 }
-.projects:hover {
+.individualProject:hover {
   background-color: red;
 }
-.projects:focus {
+.individualProject:focus {
   background-color: blue;
 }
 .todo {

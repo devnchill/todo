@@ -6,7 +6,11 @@ dom.displayAllProjects();
 const allTodos = document.getElementById("all-todos");
 allTodos.addEventListener("click", dom.displayAllTodos);
 
-const allProjects = document.getElementById("projects");
-allProjects.addEventListener("click", (e) => {
-  dom.displayTodoOfClickedProject(e.target.id);
+const projectSection = document.querySelectorAll(".individualProject");
+projectSection.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    console.log(e.target.id);
+    dom.displayTodoOfClickedProject(e.target.id);
+  });
 });
+console.log(projectSection);

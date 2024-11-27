@@ -26,7 +26,11 @@ const project = (function () {
     defaultProject,
     { name: "School", pid: projectCounter++, todos: [todo1] },
     { name: "Personal", pid: projectCounter++, todos: [todo2] },
-    { name: "Project", pid: projectCounter++, todos: [todo2,todo2,todo1,todo1] },
+    {
+      name: "Project",
+      pid: projectCounter++,
+      todos: [todo2, todo2, todo1, todo1],
+    },
   ];
 
   function createNewProject(name) {
@@ -73,6 +77,7 @@ const project = (function () {
     addTodoToNewProject,
     allProjects,
     deleteTodo,
+    deleteProject,
   };
 })();
 
