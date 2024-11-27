@@ -1,2 +1,2 @@
+import "/src/css/layout.css";
 import "./projects";
-//console.log("HELLO WORLD");

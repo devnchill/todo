@@ -54,6 +54,15 @@ const project = (function () {
     });
   }
 
+  function deleteProject(pid) {
+    const projectIndex = allProjects.findIndex((item) => item.pid === pid);
+    if (projectIndex !== -1) {
+      allProjects.splice(projectIndex, 1);
+    } else {
+      console.log("Project not found");
+    }
+  }
+
   return {
     createNewProject,
     addTodoToDefaultProject,
