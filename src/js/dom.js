@@ -4,6 +4,9 @@ import { createCustomElement } from "./helperfunction";
 const projectContainer = document.getElementById("projects");
 const Main = document.querySelector("main");
 const dom = (function () {
+  const clearMain = function () {
+    Main.innerHTML = "";
+  };
   const dispalyAllProjects = () => {
     const allProject = project.allProjects;
     allProject.forEach((item) => {
@@ -15,6 +18,7 @@ const dom = (function () {
   };
 
   const displayAllTodos = () => {
+    clearMain();
     project.allProjects.forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
@@ -25,6 +29,16 @@ const dom = (function () {
       });
     });
   };
-  return { dispalyAllProjects, displayAllTodos };
+
+  const displayTodoOfClickedProject = function (pid) {
+    const clickedProject = project.allProjects.find((item) => item.pid === pid);
+  };
+
+  return {
+    clearMain,
+    dispalyAllProjects,
+    displayAllTodos,
+    displayTodoOfClickedProject,
+  };
 })();
 export { dom };
