@@ -1,5 +1,6 @@
 @import "./reset.css";
 :root {
+  --white-color: #fff;
   --standard-space: 1.5rem;
   --button-width: 80%;
   --button-border-radius: 8px;
@@ -29,9 +30,11 @@ nav {
   gap: 1.5rem;
 }
 section {
+  --padding-section: 2rem;
   padding-top: var(--standard-space);
   display: grid;
   gap: var(--standard-space);
+  padding: var(--padding-section);
 }
 section div {
   display: flex;
@@ -48,4 +51,14 @@ main {
   background-color: red;
   grid-row: 2;
   grid-column: 2/3;
+}
+.projects {
+  cursor: pointer;
+  color: white;
+}
+.projects:hover{
+  background-color: red;
+}
+.projects:focus{
+  background-color: blue;
 }

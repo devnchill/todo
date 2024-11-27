@@ -1,6 +1,5 @@
 import { Todo } from "./todo.js";
 const todo1 = new Todo(
-  "0",
   "Hw",
   "do physics homework",
   "2nd septermber 2025",
@@ -9,7 +8,6 @@ const todo1 = new Todo(
 );
 
 const todo2 = new Todo(
-  "1",
   "Cw",
   "do maths homework",
   "2nd septermber 2025",
@@ -24,7 +22,12 @@ const project = (function () {
     pid: projectCounter++,
     todos: [todo1, todo2],
   };
-  const allProjects = [defaultProject];
+  const allProjects = [
+    defaultProject,
+    { name: "School", pid: projectCounter++, todos: [todo1] },
+    { name: "Personal", pid: projectCounter++, todos: [todo2] },
+    { name: "Project", pid: projectCounter++, todos: [todo2] },
+  ];
 
   function createNewProject(name) {
     const createdProject = { name: name, pid: projectCounter++, todos: [] };
