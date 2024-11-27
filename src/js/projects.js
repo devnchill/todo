@@ -18,15 +18,16 @@ const todo2 = new Todo(
 );
 
 const project = (function () {
+  let projectCounter = 0;
   const defaultProject = {
     name: "Default Project",
-    pid: 0,
+    pid: projectCounter++,
     todos: [todo1, todo2],
   };
   const allProjects = [defaultProject];
 
-  function createNewProject(name, pid) {
-    const createdProject = { name: name, pid: pid, todos: [] };
+  function createNewProject(name) {
+    const createdProject = { name: name, pid: projectCounter++, todos: [] };
     allProjects.push(createdProject);
   }
 
@@ -71,3 +72,5 @@ const project = (function () {
     deleteTodo,
   };
 })();
+
+export { project };
