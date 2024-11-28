@@ -67,18 +67,14 @@ const project = (function () {
     }
   }
 
-  function deleteTodo(pid, tid) {
-    const project = allProjects.find((project) => project.pid === pid);
-    if (project) {
-      const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
-      if (todoIndex !== -1) {
-        project.todos.splice(todoIndex, 1);
-      } else {
-        console.log("Todo not found");
-      }
-    } else {
-      console.log("Project not found");
-    }
+  function deleteTodo( tid) {
+    allProjects.forEach((project)=>{
+      project.todos.forEach((todo,index)=>{
+        if(todo.tid===tid){
+          project.todos.splice(index,1)
+        }
+      })
+    })
   }
 
   function deleteProject(pid) {
