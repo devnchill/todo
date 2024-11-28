@@ -71,14 +71,10 @@ const attachEventListenersToProjects = () => {
 
   removeTodoFromSpecificProject.forEach((item) => {
     item.addEventListener("click", (e) => {
-      let tid = e.currentTarget.parentElement.id;
+      let tid = Number(e.currentTarget.parentElement.id);
+      console.log("tid from DOM ->", tid, typeof tid);
       const pid = project.identifyProject(tid);
-      console.log(pid);
-      //console.log(
-      //  "This means that event listener is working after clicking on remove button",
-      //);
-      //console.log(tid);
-      //console.log(pid);
+      console.log("Projetc pid -> ", pid);
       project.deleteTodo(tid);
       attachEventListenersToProjects();
       dom.displayTodoOfClickedProject(pid);

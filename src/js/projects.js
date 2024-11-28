@@ -95,12 +95,13 @@ const project = (function () {
     console.log("Looking for tid:", tid);
     for (const project of allProjects) {
       for (const todo of project.todos) {
+        console.log("COMPARING todo.tid:", todo.tid, "with tid:", Number(tid));
         if (todo.tid === Number(tid)) {
-          return project.pid; 
+          return project.pid;
         }
       }
-      return null; 
     }
+    return null;
   }
 
   return {
