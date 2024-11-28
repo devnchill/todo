@@ -1,18 +1,34 @@
 import { project } from "./projects";
 import { createCustomElement } from "./helperfunction";
 
-const projectContainer = document.getElementById("projects");
+const projectContainer = document.getElementById("projectSection");
 const Main = document.querySelector("main");
 const dom = (function () {
   const clearMain = function () {
     Main.innerHTML = "";
   };
+
   const displayAllProjects = () => {
-    const allProjects = project.allProjects;
-    allProjects.forEach((item) => {
-      const projectDiv = createCustomElement("div", item.pid, item.name, [
+    projectContainer.innerHTML="";
+    const arrayOfAllProjects = project.allProjects;
+    arrayOfAllProjects.forEach((item) => {
+      const projectDiv = createCustomElement("div", item.pid, "", [
         "individualProject",
       ]);
+      const projectTitle = createCustomElement(
+        "p",
+        "project-title",
+        item.name,
+        ["p-title"],
+      );
+      const projectDeleteButton = createCustomElement(
+        "button",
+        "project-remove",
+        "delete",
+        ["p-delete-button"],
+      );
+      projectDiv.appendChild(projectTitle);
+      projectDiv.appendChild(projectDeleteButton);
       projectContainer.appendChild(projectDiv);
     });
   };
@@ -23,7 +39,7 @@ const dom = (function () {
       const todos = project.todos;
       todos.forEach((todo) => {
         const todoDiv = createCustomElement("div", todo.tid, todo.title, [
-          "todo",
+          "individualTodo",
         ]);
         Main.appendChild(todoDiv);
       });
@@ -35,13 +51,17 @@ const dom = (function () {
     const clickedProject = project.allProjects.find(
       (item) => item.pid === parseInt(pid),
     );
-    clickedProject.todos.forEach((todo) => {
-      const todoDiv = createCustomElement("div", todo.tid, todo.title, [
-        "todo",
-        "specific-project-todo",
-      ]);
-      Main.appendChild(todoDiv);
-    });
+    if (clickedProject) {
+      clickedProject.todos.forEach((todo) => {
+        const todoDiv = createCustomElement("div", todo.tid, todo.title, [
+          "todo",
+          "specific-project-todo",
+        ]);
+        Main.appendChild(todoDiv);
+      });
+    } else {
+      console.log("project not found");
+    }
   };
 
   return {

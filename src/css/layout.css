@@ -40,7 +40,7 @@ section div {
   display: flex;
   justify-content: center;
 }
-section button {
+section:nth-child(1) button {
   overflow: hidden;
   text-overflow: ellipsis;
   width: var(--button-width);
@@ -58,6 +58,9 @@ main {
 .individualProject {
   cursor: pointer;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .individualProject:hover {
   background-color: red;
@@ -65,7 +68,11 @@ main {
 .individualProject:focus {
   background-color: blue;
 }
-.todo {
+.individualProject button {
+  height: 80%;
+  text-align: center;
+}
+.individualTodo {
   --height-todo-div: 2rem;
   background-color: white;
   height: var(--height-todo-div);

@@ -1,15 +1,31 @@
 import { Todo } from "./todo.js";
 const todo1 = new Todo(
-  "Hw",
-  "do physics homework",
+  "Physcis Homework",
+  "I will have to do my physics homework",
   "2nd septermber 2025",
   "high",
   "don't forget it you idiot",
 );
 
 const todo2 = new Todo(
-  "Cw",
-  "do maths homework",
+  "Chemistry Homework",
+  "do chemistry homework by the end of this week",
+  "2nd septermber 2025",
+  "high",
+  "don't forget it you idiot",
+);
+
+const todo3 = new Todo(
+  "Maths Homework",
+  "do maths homework by the end of this week",
+  "2nd septermber 2025",
+  "high",
+  "don't forget it you idiot",
+);
+
+const todo4 = new Todo(
+  "building TTT ",
+  "finish working on Tic Tac Toe game by this weekend",
   "2nd septermber 2025",
   "high",
   "don't forget it you idiot",
@@ -20,16 +36,16 @@ const project = (function () {
   const defaultProject = {
     name: "Default Project",
     pid: projectCounter++,
-    todos: [todo1, todo2],
+    todos: [todo1, todo2, todo3],
   };
   const allProjects = [
     defaultProject,
-    { name: "School", pid: projectCounter++, todos: [todo1] },
-    { name: "Personal", pid: projectCounter++, todos: [todo2] },
+    { name: "School", pid: projectCounter++, todos: [todo2] },
+    { name: "Personal", pid: projectCounter++, todos: [todo4] },
     {
       name: "Project",
       pid: projectCounter++,
-      todos: [todo2, todo2, todo1, todo1],
+      todos: [todo2, todo4, todo1, todo3],
     },
   ];
 
@@ -51,16 +67,19 @@ const project = (function () {
     }
   }
 
-  function deleteTodo(tid) {
-    allProjects.forEach((project) => {
-      const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
-      if (todoIndex !== -1) {
-        project.todos.splice(todoIndex, 1);
-      } else {
-        console.log("Todo not found");
-      }
-    });
+function deleteTodo(pid, tid) {
+  const project = allProjects.find((project) => project.pid === pid);
+  if (project) {
+    const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
+    if (todoIndex !== -1) {
+      project.todos.splice(todoIndex, 1);
+    } else {
+      console.log("Todo not found");
+    }
+  } else {
+    console.log("Project not found");
   }
+}
 
   function deleteProject(pid) {
     const projectIndex = allProjects.findIndex((item) => item.pid === pid);
