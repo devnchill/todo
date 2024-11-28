@@ -1,6 +1,7 @@
 import { dom } from "./dom";
 import { project } from "./projects";
 
+const projectContainer = document.getElementById("projectSection");
 function createCustomElement(tag, id, textcontent, classlist = []) {
   let element = document.createElement(tag);
   element.id = id;
@@ -23,7 +24,7 @@ function createTodoElement(todo) {
   Main.appendChild(todoDiv);
 }
 
-function createProjectElement() {
+function createProjectElement(item) {
   const projectDiv = createCustomElement("div", item.pid, "", [
     "individualProject",
   ]);
@@ -40,6 +41,7 @@ function createProjectElement() {
   projectDiv.appendChild(projectDeleteButton);
   projectContainer.appendChild(projectDiv);
 }
+
 const attachEventListenersToProjects = () => {
   const allProjectElements = document.querySelectorAll(".individualProject");
   const showAllTodoBtn = document.querySelector("#all-todos");
@@ -79,6 +81,7 @@ const attachEventListenersToProjects = () => {
     });
   });
 };
+
 export {
   createCustomElement,
   attachEventListenersToProjects,

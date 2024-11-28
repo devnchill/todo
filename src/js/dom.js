@@ -1,8 +1,12 @@
 import { project } from "./projects";
-import { createCustomElement, createTodoElement } from "./helperfunction";
+import {
+  createCustomElement,
+  createTodoElement,
+  createProjectElement,
+} from "./helperfunction";
 
-const projectContainer = document.getElementById("projectSection");
 const Main = document.querySelector("main");
+const projectContainer = document.getElementById("projectSection");
 const dom = (function () {
   const clearMain = function () {
     Main.innerHTML = "";
@@ -12,24 +16,7 @@ const dom = (function () {
     projectContainer.innerHTML = "";
     const arrayOfAllProjects = project.allProjects;
     arrayOfAllProjects.forEach((item) => {
-      const projectDiv = createCustomElement("div", item.pid, "", [
-        "individualProject",
-      ]);
-      const projectTitle = createCustomElement(
-        "p",
-        "project-title",
-        item.name,
-        ["p-title"],
-      );
-      const projectDeleteButton = createCustomElement(
-        "button",
-        "project-remove",
-        "delete",
-        ["p-delete-button"],
-      );
-      projectDiv.appendChild(projectTitle);
-      projectDiv.appendChild(projectDeleteButton);
-      projectContainer.appendChild(projectDiv);
+      createProjectElement(item);
     });
   };
 
