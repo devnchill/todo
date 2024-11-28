@@ -16,15 +16,17 @@ const attachEventListenersToProjects = () => {
     document.querySelectorAll("#project-remove");
   const allRemoveTodoBtn = document.querySelectorAll(".todo-remove-btn");
 
-  //console.log(allRemoveTodoBtn);
-
   allProjectElements.forEach((item) => {
     item.addEventListener("click", (e) => {
       dom.displayTodoOfClickedProject(e.currentTarget.id);
     });
   });
 
-  showAllTodoBtn.addEventListener("click", dom.displayAllTodos);
+  //showAllTodoBtn.addEventListener("click", dom.displayAllTodos);
+  showAllTodoBtn.addEventListener("click", () => {
+    dom.displayAllTodos();
+    attachEventListenersToProjects();
+  });
 
   deleteSpecificProjectButton.forEach((item) => {
     item.addEventListener("click", (e) => {
