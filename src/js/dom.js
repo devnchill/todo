@@ -1,13 +1,9 @@
 import { project } from "./projects";
-import {
-  createCustomElement,
-  createTodoElement,
-  createProjectElement,
-} from "./helperfunction";
+import { createTodoElement, createProjectElement } from "./helperfunction";
 
-const Main = document.querySelector("main");
-const projectContainer = document.getElementById("projectSection");
 const dom = (function () {
+  const Main = document.querySelector("main");
+  const projectContainer = document.getElementById("projectSection");
   const clearMain = function () {
     Main.innerHTML = "";
   };
