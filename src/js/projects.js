@@ -36,16 +36,20 @@ const project = (function () {
   const defaultProject = {
     name: "Default Project",
     pid: projectCounter++,
-    todos: [todo1, todo2, todo3],
+    todos: [todo1],
   };
   const allProjects = [
     defaultProject,
     { name: "School", pid: projectCounter++, todos: [todo2] },
-    { name: "Personal", pid: projectCounter++, todos: [todo4] },
+    {
+      name: "Personal",
+      pid: projectCounter++,
+      todos: [todo4, todo2, todo1, todo3],
+    },
     {
       name: "Project",
       pid: projectCounter++,
-      todos: [todo2, todo4, todo1, todo3],
+      todos: [todo3],
     },
   ];
 
@@ -67,14 +71,15 @@ const project = (function () {
     }
   }
 
-  function deleteTodo( tid) {
-    allProjects.forEach((project)=>{
-      project.todos.forEach((todo,index)=>{
-        if(todo.tid===tid){
-          project.todos.splice(index,1)
+  function deleteTodo(tid) {
+    console.log("Running deleteTodo function");
+    allProjects.forEach((project) => {
+      project.todos.forEach((todo, index) => {
+        if (todo.tid === tid) {
+          project.todos.splice(index, 1);
         }
-      })
-    })
+      });
+    });
   }
 
   function deleteProject(pid) {
@@ -86,6 +91,18 @@ const project = (function () {
     }
   }
 
+  function identifyProject(tid) {
+    console.log("Looking for tid:", tid);
+    for (const project of allProjects) {
+      for (const todo of project.todos) {
+        if (todo.tid === Number(tid)) {
+          return project.pid; 
+        }
+      }
+      return null; 
+    }
+  }
+
   return {
     createNewProject,
     addTodoToDefaultProject,
@@ -93,6 +110,7 @@ const project = (function () {
     allProjects,
     deleteTodo,
     deleteProject,
+    identifyProject,
   };
 })();
 

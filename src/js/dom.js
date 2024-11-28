@@ -1,5 +1,9 @@
 import { project } from "./projects";
-import { createTodoElement, createProjectElement } from "./helperfunction";
+import {
+  createTodoElement,
+  createProjectElement,
+  createTodoElementForSpecificProject,
+} from "./helperfunction";
 
 const dom = (function () {
   const Main = document.querySelector("main");
@@ -33,7 +37,7 @@ const dom = (function () {
     );
     if (clickedProject) {
       clickedProject.todos.forEach((todo) => {
-        createTodoElement(todo);
+        createTodoElementForSpecificProject(todo);
       });
     } else {
       console.log("project not found");

@@ -10,6 +10,23 @@ function createCustomElement(tag, id, textcontent, classlist = []) {
   return element;
 }
 
+function createTodoElementForSpecificProject(todo) {
+  const Main = document.querySelector("main");
+  const todoDiv = createCustomElement("div", todo.tid, "", ["specificTodo"]);
+  const todoTitle = createCustomElement(
+    "p",
+    "p-specific-todo-title",
+    todo.title,
+    ["specific-todo-title"],
+  );
+  const todoRemoveBtn = createCustomElement("button", "", "Remove", [
+    "specific-remove-btn",
+  ]);
+  todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoRemoveBtn);
+  Main.appendChild(todoDiv);
+}
+
 function createTodoElement(todo) {
   const Main = document.querySelector("main");
   const todoDiv = createCustomElement("div", todo.tid, "", ["individualTodo"]);
@@ -48,10 +65,30 @@ const attachEventListenersToProjects = () => {
   const deleteSpecificProjectButton =
     document.querySelectorAll("#project-remove");
   const allRemoveTodoBtn = document.querySelectorAll(".todo-remove-btn");
+  const removeTodoFromSpecificProject = document.querySelectorAll(
+    ".specific-remove-btn",
+  );
+
+  removeTodoFromSpecificProject.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let tid = e.currentTarget.parentElement.id;
+      const pid = project.identifyProject(tid);
+      console.log(pid);
+      //console.log(
+      //  "This means that event listener is working after clicking on remove button",
+      //);
+      //console.log(tid);
+      //console.log(pid);
+      project.deleteTodo(tid);
+      attachEventListenersToProjects();
+      dom.displayTodoOfClickedProject(pid);
+    });
+  });
 
   allProjectElements.forEach((item) => {
     item.addEventListener("click", (e) => {
       dom.displayTodoOfClickedProject(e.currentTarget.id);
+      attachEventListenersToProjects();
     });
   });
 
@@ -87,4 +124,5 @@ export {
   attachEventListenersToProjects,
   createTodoElement,
   createProjectElement,
+  createTodoElementForSpecificProject,
 };
