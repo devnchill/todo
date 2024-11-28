@@ -12,6 +12,11 @@ function createCustomElement(tag, id, textcontent, classlist = []) {
 const attachEventListenersToProjects = () => {
   const allProjectElements = document.querySelectorAll(".individualProject");
   const showAllTodoBtn = document.querySelector("#all-todos");
+  const deleteSpecificProjectButton =
+    document.querySelectorAll("#project-remove");
+  const allRemoveTodoBtn = document.querySelectorAll(".todo-remove-btn");
+
+  //console.log(allRemoveTodoBtn);
 
   allProjectElements.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -20,8 +25,6 @@ const attachEventListenersToProjects = () => {
   });
 
   showAllTodoBtn.addEventListener("click", dom.displayAllTodos);
-  const deleteSpecificProjectButton =
-    document.querySelectorAll("#project-remove");
 
   deleteSpecificProjectButton.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -29,6 +32,16 @@ const attachEventListenersToProjects = () => {
       pid = Number(pid);
       project.deleteProject(pid);
       dom.displayAllProjects();
+      attachEventListenersToProjects();
+    });
+  });
+
+  allRemoveTodoBtn.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let tid = Number(e.target.parentElement.id);
+      console.log(tid);
+      project.deleteTodo(tid);
+      dom.displayAllTodos();
       attachEventListenersToProjects();
     });
   });

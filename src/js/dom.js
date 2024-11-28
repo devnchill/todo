@@ -9,7 +9,7 @@ const dom = (function () {
   };
 
   const displayAllProjects = () => {
-    projectContainer.innerHTML="";
+    projectContainer.innerHTML = "";
     const arrayOfAllProjects = project.allProjects;
     arrayOfAllProjects.forEach((item) => {
       const projectDiv = createCustomElement("div", item.pid, "", [
@@ -38,9 +38,17 @@ const dom = (function () {
     project.allProjects.forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
-        const todoDiv = createCustomElement("div", todo.tid, todo.title, [
+        const todoDiv = createCustomElement("div", todo.tid, "", [
           "individualTodo",
         ]);
+        const todoTitle = createCustomElement("p", "p-todo-title", todo.title, [
+          "todo-title",
+        ]);
+        const todoRemoveBtn = createCustomElement("button", "", "Remove", [
+          "todo-remove-btn",
+        ]);
+        todoDiv.appendChild(todoTitle);
+        todoDiv.appendChild(todoRemoveBtn);
         Main.appendChild(todoDiv);
       });
     });

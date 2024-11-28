@@ -67,19 +67,19 @@ const project = (function () {
     }
   }
 
-function deleteTodo(pid, tid) {
-  const project = allProjects.find((project) => project.pid === pid);
-  if (project) {
-    const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
-    if (todoIndex !== -1) {
-      project.todos.splice(todoIndex, 1);
+  function deleteTodo(pid, tid) {
+    const project = allProjects.find((project) => project.pid === pid);
+    if (project) {
+      const todoIndex = project.todos.findIndex((todo) => todo.tid === tid);
+      if (todoIndex !== -1) {
+        project.todos.splice(todoIndex, 1);
+      } else {
+        console.log("Todo not found");
+      }
     } else {
-      console.log("Todo not found");
+      console.log("Project not found");
     }
-  } else {
-    console.log("Project not found");
   }
-}
 
   function deleteProject(pid) {
     const projectIndex = allProjects.findIndex((item) => item.pid === pid);

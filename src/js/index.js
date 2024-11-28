@@ -3,5 +3,6 @@ import { attachEventListenersToProjects } from "./helperfunction";
 import "/src/css/layout.css";
 
 dom.displayAllProjects();
+dom.displayAllTodos();
 
 attachEventListenersToProjects();

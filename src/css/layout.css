@@ -73,6 +73,8 @@ main {
   text-align: center;
 }
 .individualTodo {
+  display: flex;
+  justify-content: space-between;
   --height-todo-div: 2rem;
   background-color: white;
   height: var(--height-todo-div);
