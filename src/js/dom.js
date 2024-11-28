@@ -1,5 +1,5 @@
 import { project } from "./projects";
-import { createCustomElement } from "./helperfunction";
+import { createCustomElement, createTodoElement } from "./helperfunction";
 
 const projectContainer = document.getElementById("projectSection");
 const Main = document.querySelector("main");
@@ -38,18 +38,7 @@ const dom = (function () {
     project.allProjects.forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
-        const todoDiv = createCustomElement("div", todo.tid, "", [
-          "individualTodo",
-        ]);
-        const todoTitle = createCustomElement("p", "p-todo-title", todo.title, [
-          "todo-title",
-        ]);
-        const todoRemoveBtn = createCustomElement("button", "", "Remove", [
-          "todo-remove-btn",
-        ]);
-        todoDiv.appendChild(todoTitle);
-        todoDiv.appendChild(todoRemoveBtn);
-        Main.appendChild(todoDiv);
+        createTodoElement(todo);
       });
     });
   };
@@ -61,11 +50,7 @@ const dom = (function () {
     );
     if (clickedProject) {
       clickedProject.todos.forEach((todo) => {
-        const todoDiv = createCustomElement("div", todo.tid, todo.title, [
-          "todo",
-          "specific-project-todo",
-        ]);
-        Main.appendChild(todoDiv);
+        createTodoElement(todo);
       });
     } else {
       console.log("project not found");

@@ -9,6 +9,37 @@ function createCustomElement(tag, id, textcontent, classlist = []) {
   return element;
 }
 
+function createTodoElement(todo) {
+  const Main = document.querySelector("main");
+  const todoDiv = createCustomElement("div", todo.tid, "", ["individualTodo"]);
+  const todoTitle = createCustomElement("p", "p-todo-title", todo.title, [
+    "todo-title",
+  ]);
+  const todoRemoveBtn = createCustomElement("button", "", "Remove", [
+    "todo-remove-btn",
+  ]);
+  todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoRemoveBtn);
+  Main.appendChild(todoDiv);
+}
+
+function createProjectElement() {
+  const projectDiv = createCustomElement("div", item.pid, "", [
+    "individualProject",
+  ]);
+  const projectTitle = createCustomElement("p", "project-title", item.name, [
+    "p-title",
+  ]);
+  const projectDeleteButton = createCustomElement(
+    "button",
+    "project-remove",
+    "delete",
+    ["p-delete-button"],
+  );
+  projectDiv.appendChild(projectTitle);
+  projectDiv.appendChild(projectDeleteButton);
+  projectContainer.appendChild(projectDiv);
+}
 const attachEventListenersToProjects = () => {
   const allProjectElements = document.querySelectorAll(".individualProject");
   const showAllTodoBtn = document.querySelector("#all-todos");
@@ -48,4 +79,9 @@ const attachEventListenersToProjects = () => {
     });
   });
 };
-export { createCustomElement, attachEventListenersToProjects };
+export {
+  createCustomElement,
+  attachEventListenersToProjects,
+  createTodoElement,
+  createProjectElement,
+};
