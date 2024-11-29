@@ -1,5 +1,9 @@
 const projectContainer = document.getElementById("projectSection");
 function createCustomElement(tag, id, textcontent, classlist = []) {
+  if (!Array.isArray(classlist)) {
+    console.error("Invalid classlist:", classlist);
+    classlist = [];
+  }
   let element = document.createElement(tag);
   element.id = id;
   element.textContent = textcontent;
@@ -9,14 +13,14 @@ function createCustomElement(tag, id, textcontent, classlist = []) {
 
 function createTodoElementForSpecificProject(todo) {
   const Main = document.querySelector("main");
-  const todoDiv = createCustomElement("div", todo.tid, "", ["specificTodo"]);
+  const todoDiv = createCustomElement("div", "", "", ["specificTodo"]);
   const todoTitle = createCustomElement(
     "p",
     "p-specific-todo-title",
     todo.title,
     ["specific-todo-title"],
   );
-  const todoRemoveBtn = createCustomElement("button", "", "Remove", [
+  const todoRemoveBtn = createCustomElement("button", todo.tid, "Remove", [
     "specific-remove-btn",
   ]);
   todoDiv.appendChild(todoTitle);
@@ -30,7 +34,7 @@ function createTodoElement(todo) {
   const todoTitle = createCustomElement("p", "p-todo-title", todo.title, [
     "todo-title",
   ]);
-  const todoRemoveBtn = createCustomElement("button", "", "Remove", [
+  const todoRemoveBtn = createCustomElement("button", todo.tid,  "Remove", [
     "todo-remove-btn",
   ]);
   todoDiv.appendChild(todoTitle);
@@ -47,7 +51,7 @@ function createProjectElement(item) {
   ]);
   const projectDeleteButton = createCustomElement(
     "button",
-    "project-remove",
+    item.pid,
     "delete",
     ["p-delete-button"],
   );
