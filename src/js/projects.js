@@ -31,6 +31,14 @@ const todo4 = new Todo(
   "don't forget it you idiot",
 );
 
+const todo5 = new Todo(
+  "building todo ",
+  "finish working on TODO game by this weekend",
+  "2nd septermber 2025",
+  "high",
+  "don't forget it you idiot",
+);
+
 const project = (function () {
   let projectCounter = 0;
   const defaultProject = {
@@ -44,12 +52,12 @@ const project = (function () {
     {
       name: "Personal",
       pid: projectCounter++,
-      todos: [todo4, todo2, todo1, todo3],
+      todos: [todo3],
     },
     {
-      name: "Project",
+      name: "Odin",
       pid: projectCounter++,
-      todos: [todo3],
+      todos: [todo4,todo5],
     },
   ];
 
