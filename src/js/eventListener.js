@@ -17,8 +17,8 @@ const attachEventListenersToProjects = () => {
       const pid = project.identifyProject(tid);
       console.log("Projetc pid -> ", pid);
       project.deleteTodo(tid);
-      attachEventListenersToProjects();
       dom.displayTodoOfClickedProject(pid);
+      attachEventListenersToProjects();
     });
   });
 
