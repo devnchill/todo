@@ -1,68 +1,15 @@
-import { Todo } from "./todo.js";
-const todo1 = new Todo(
-  "Physcis Homework",
-  "I will have to do my physics homework",
-  "2nd septermber 2025",
-  "high",
-  "don't forget it you idiot",
-);
+import { Project } from "./project.js";
+import * as Todos from "./demotodos.js";
 
-const todo2 = new Todo(
-  "Chemistry Homework",
-  "do chemistry homework by the end of this week",
-  "2nd septermber 2025",
-  "high",
-  "don't forget it you idiot",
-);
+const logic = (function () {
+  const defaultProject = new Project("Default Project", [Todos.todo1]);
+  const personal = new Project("Project", [Todos.todo2, Todos.todo3]);
+  const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
 
-const todo3 = new Todo(
-  "Maths Homework",
-  "do maths homework by the end of this week",
-  "2nd septermber 2025",
-  "high",
-  "don't forget it you idiot",
-);
-
-const todo4 = new Todo(
-  "building TTT ",
-  "finish working on Tic Tac Toe game by this weekend",
-  "2nd septermber 2025",
-  "high",
-  "don't forget it you idiot",
-);
-
-const todo5 = new Todo(
-  "building todo ",
-  "finish working on TODO game by this weekend",
-  "2nd septermber 2025",
-  "high",
-  "don't forget it you idiot",
-);
-
-const project = (function () {
-  let projectCounter = 0;
-  const defaultProject = {
-    name: "Default Project",
-    pid: projectCounter++,
-    todos: [todo1],
-  };
-  const allProjects = [
-    defaultProject,
-    { name: "School", pid: projectCounter++, todos: [todo2] },
-    {
-      name: "Personal",
-      pid: projectCounter++,
-      todos: [todo3],
-    },
-    {
-      name: "Odin",
-      pid: projectCounter++,
-      todos: [todo4,todo5],
-    },
-  ];
+  const allProjects = [defaultProject, personal, odin];
 
   function createNewProject(name) {
-    const createdProject = { name: name, pid: projectCounter++, todos: [] };
+    const createdProject = new Project(name);
     allProjects.push(createdProject);
   }
 
@@ -123,4 +70,4 @@ const project = (function () {
   };
 })();
 
-export { project };
+export { logic  };

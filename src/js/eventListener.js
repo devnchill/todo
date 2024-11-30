@@ -1,5 +1,5 @@
 import { dom } from "./dom";
-import { project } from "./projects";
+import { project } from "./logic";
 
 const attachEventListenersToProjects = () => {
 };

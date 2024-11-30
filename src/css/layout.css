@@ -55,24 +55,24 @@ main {
   gap: var(--standard-space);
   align-content: start;
 }
-.individualProject {
+.project {
   cursor: pointer;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.individualProject:hover {
+.project:hover {
   background-color: red;
 }
-.individualProject:focus {
+.project:focus {
   background-color: blue;
 }
-.individualProject button {
+.project button {
   height: 80%;
   text-align: center;
 }
-.individualTodo {
+.todo {
   display: flex;
   justify-content: space-between;
   --height-todo-div: 2rem;
