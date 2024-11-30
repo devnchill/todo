@@ -49,13 +49,17 @@ const logic = (function () {
   function identifyProject(tid) {
     console.log("Looking for tid:", tid);
     for (const project of allProjects) {
+      console.log(project);
       for (const todo of project.todos) {
+        console.log(project.name);
         console.log("COMPARING todo.tid:", todo.tid, "with tid:", Number(tid));
-        if (todo.tid === Number(tid)) {
+        if (todo.tid === tid) {
+          console.log(project, "projectname");
           return project.pid;
         }
       }
     }
+    console.log("identifyingproject done");
     return null;
   }
 
@@ -70,4 +74,4 @@ const logic = (function () {
   };
 })();
 
-export { logic  };
+export { logic };

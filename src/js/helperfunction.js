@@ -11,7 +11,7 @@ function createCustomElement(tag, id, textcontent, classlist = []) {
   return element;
 }
 
-function createTodoElement(todo) {
+function createTodoForAll(todo) {
   const Main = document.querySelector("main");
   const todoDiv = createCustomElement("div", todo.tid, "", ["todo"]);
   const todoTitle = createCustomElement("p", todo.tid, todo.title, [
@@ -41,4 +41,18 @@ function createProjectElement(item) {
   projectContainer.appendChild(projectDiv);
 }
 
-export { createCustomElement, createTodoElement, createProjectElement };
+function createTodoForSpecificProject(todo) {
+  const Main = document.querySelector("main");
+  const todoDiv = createCustomElement("div", todo.tid, "", ["todo-specific"]);
+  const todoTitle = createCustomElement("p", todo.tid, todo.title, [
+    "todo-specific-title",
+  ]);
+  const todoRemoveBtn = createCustomElement("button", todo.tid, "remove", [
+    "todo-specific-remove-btn",
+  ]);
+  todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoRemoveBtn);
+  Main.appendChild(todoDiv);
+}
+
+export { createTodoForAll, createProjectElement, createTodoForSpecificProject };

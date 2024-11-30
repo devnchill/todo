@@ -10,13 +10,9 @@ class Todo {
     this.checklist = false;
   }
 
-  get newPriority() {
-    return this.priority;
-  }
-
-  set newPriority(param) {
-    this.priority = param;
-  }
+  renameTitle = (param) => {
+    this.title = param;
+  };
 
   toggleComplete() {
     this.checklist = !this.checklist;

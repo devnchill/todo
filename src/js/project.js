@@ -5,5 +5,10 @@ class Project {
     this.pid = Project.projectCounter++;
     this.todos = todos;
   }
+
+  newName = (name) => {
+    this.name = name;
+  };
+
 }
 export { Project };

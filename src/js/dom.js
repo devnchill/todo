@@ -1,5 +1,9 @@
-import {  logic } from "./logic";
-import { createTodoElement, createProjectElement } from "./helperfunction";
+import { logic } from "./logic";
+import {
+  createTodoForAll,
+  createProjectElement,
+  createTodoForSpecificProject,
+} from "./helperfunction";
 
 const dom = (function () {
   const Main = document.querySelector("main");
@@ -21,7 +25,7 @@ const dom = (function () {
     logic.allProjects.forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
-        createTodoElement(todo);
+        createTodoForAll(todo);
       });
     });
   };
@@ -33,7 +37,7 @@ const dom = (function () {
     );
     if (clickedProject) {
       clickedProject.todos.forEach((todo) => {
-        createTodoElementForSpecificProject(todo);
+        createTodoForSpecificProject(todo);
       });
     } else {
       console.log("project not found");
