@@ -1,81 +1,9 @@
 @import "./reset.css";
 :root {
-  --white-color: #fff;
-  --standard-space: 1.5rem;
-  --button-width: 80%;
-  --button-border-radius: 8px;
 }
+
 html,
 body {
   height: 100%;
-}
-body {
   display: grid;
-  grid-template-rows: 10% 1fr;
-  grid-template-columns: 20% 1fr;
-}
-header {
-  padding: var(--standard-space);
-  text-align: center;
-  grid-row: 1/2;
-  grid-column: 1/3;
-  border: 2px solid purple;
-  background-color: purple;
-}
-nav {
-  grid-row: 2;
-  grid-column: 1/2;
-  border: 2px solid navy;
-  background-color: navy;
-  gap: 1.5rem;
-}
-section {
-  --padding-section: 2rem;
-  padding-top: var(--standard-space);
-  display: grid;
-  gap: var(--standard-space);
-  padding: var(--padding-section);
-}
-section div {
-  display: flex;
-  justify-content: center;
-}
-section:nth-child(1) button {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: var(--button-width);
-  border-radius: var(--button-border-radius);
-}
-main {
-  border: 2px solid red;
-  background-color: red;
-  grid-row: 2;
-  grid-column: 2/3;
-  display: grid;
-  gap: var(--standard-space);
-  align-content: start;
-}
-.project {
-  cursor: pointer;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.project:hover {
-  background-color: red;
-}
-.project:focus {
-  background-color: blue;
-}
-.project button {
-  height: 80%;
-  text-align: center;
-}
-.todo {
-  display: flex;
-  justify-content: space-between;
-  --height-todo-div: 2rem;
-  background-color: white;
-  height: var(--height-todo-div);
 }
