@@ -76,7 +76,8 @@ body {
     }
     #__dom {
       display: grid;
-      .todo {
+      .todo,
+      .todo-specific {
         padding: 1rem;
         display: flex;
         flex: 1;
