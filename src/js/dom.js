@@ -6,10 +6,10 @@ import {
 } from "./helperfunction";
 
 const dom = (function () {
-  const Main = document.querySelector("main");
+  const DOM = document.getElementById("__dom");
   const projectContainer = document.getElementById("__project_section");
-  const clearMain = function () {
-    Main.innerHTML = "";
+  const clearDOM = function () {
+    DOM.innerHTML = "";
   };
 
   const displayAllProjects = () => {
@@ -21,7 +21,7 @@ const dom = (function () {
   };
 
   const displayAllTodos = () => {
-    clearMain();
+    clearDOM();
     logic.allProjects.forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
@@ -31,7 +31,7 @@ const dom = (function () {
   };
 
   const displayTodoOfClickedProject = function (pid) {
-    clearMain();
+    clearDOM();
     const clickedProject = logic.allProjects.find(
       (item) => item.pid === parseInt(pid),
     );
@@ -45,7 +45,7 @@ const dom = (function () {
   };
 
   return {
-    clearMain,
+    clearDOM,
     displayAllProjects,
     displayAllTodos,
     displayTodoOfClickedProject,

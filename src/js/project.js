@@ -9,6 +9,5 @@ class Project {
   newName = (name) => {
     this.name = name;
   };
-
 }
 export { Project };

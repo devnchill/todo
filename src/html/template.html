@@ -6,18 +6,24 @@
     <title>Todo</title>
   </head>
   <body>
+    <header>
+      <h1>Todo</h1>
+    </header>
     <nav>
       <section>
         <div><button type="button" id="__all_todos">All Todos</button></div>
         <div><button type="button" id="today">Today</button></div>
       </section>
       <hr />
-      <h2>Projects</h2>
+      <div>
+        <h2>Projects</h2>
+        <button type="button" id="__create_new_project">New</button>
+      </div>
       <section id="__project_section"></section>
     </nav>
-    <header>
-      <h1>Todo</h1>
-    </header>
-    <main></main>
+    <main>
+      <div id="__create_new_todo"><button type="button">Create</button></div>
+      <div id="__dom"></div>
+    </main>
   </body>
 </html>

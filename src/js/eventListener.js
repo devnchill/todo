@@ -2,13 +2,14 @@ import { dom } from "./dom";
 import { logic } from "./logic";
 
 const attachEventListenersToProjects = () => {
-  const MAIN = document.querySelector("main");
+  const DOM = document.getElementById("__dom");
   const PROJECTSECTION = document.getElementById("__project_section");
   const ALLTODOS = document.getElementById("__all_todos");
+  const NEWPROJECTBTN = document.getElementById("__create_new_project");
 
   ALLTODOS.addEventListener("click", dom.displayAllTodos);
 
-  MAIN.addEventListener("click", (e) => {
+  DOM.addEventListener("click", (e) => {
     if (e.target.classList.contains("todo-remove-btn")) {
       let tid = Number(e.target.id);
       logic.deleteTodo(tid);
@@ -33,6 +34,10 @@ const attachEventListenersToProjects = () => {
       logic.deleteProject(pid);
       dom.displayAllProjects();
     }
+  });
+
+  NEWPROJECTBTN.addEventListener("click", () => {
+    logic.createNewProject("alphabetagamatheta"), dom.displayAllProjects();
   });
 };
 

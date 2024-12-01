@@ -1,9 +1,92 @@
 @import "./reset.css";
 :root {
+  --light-green: #73ec8b;
+  --greenish-yellow: #d2ff72;
 }
 
 html,
 body {
   height: 100%;
+}
+
+body {
   display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 10% 1fr;
+  header {
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: header;
+  }
+  nav {
+    background-color: palegoldenrod;
+    grid-area: sidebar;
+    section {
+      display: grid;
+      gap: 1.5rem;
+      margin: 1rem 0 1rem 0;
+      div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        button {
+          width: 50%;
+        }
+        button:hover {
+          background-color: var(--light-green);
+        }
+      }
+    }
+    div {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      h2 {
+        text-align: center;
+      }
+    }
+    section {
+      padding: 2rem;
+      .project {
+        cursor: pointer;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .project:hover {
+        background-color: var(--greenish-yellow);
+      }
+    }
+  }
+  main {
+    background-color: paleturquoise;
+    grid-area: main;
+    #__create_new_todo {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #__dom {
+      display: grid;
+      .todo {
+        padding: 1rem;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+        button:hover {
+          cursor: pointer;
+          background-color: var(--light-green);
+        }
+      }
+    }
+  }
 }
