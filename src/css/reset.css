@@ -6,7 +6,7 @@
 }
 
 /* 2. Remove default margin */
-*:not(#__project_dialog) {
+*:not(dialog) {
   margin: 0;
 }
 

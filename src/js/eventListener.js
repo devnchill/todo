@@ -6,9 +6,12 @@ const attachEventListenersToProjects = () => {
   const DOM = document.getElementById("__dom");
   const PROJECTSECTION = document.getElementById("__project_section");
   const ALLTODOS = document.getElementById("__all_todos");
+  const PROJECTFORM = document.getElementById("__project_form");
   const NEWPROJECTBTN = document.getElementById("__create_new_project");
   const CANCELPROJECT = document.getElementById("__project_cancel_btn_form");
-  const PROJECTFORM = document.getElementById("__project_form");
+  const NEWTODOBTN = document.getElementById("__create_new_todo_btn");
+  const TODOFORM = document.getElementById("__todo_form");
+  const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
 
   ALLTODOS.addEventListener("click", dom.displayAllTodos);
 
@@ -53,6 +56,25 @@ const attachEventListenersToProjects = () => {
   CANCELPROJECT.addEventListener("click", (e) => {
     e.preventDefault();
     inputHandling.closeProjectDialog();
+  });
+
+  NEWTODOBTN.addEventListener("click", () => {
+    inputHandling.openTodoDialog();
+  });
+
+  TODOFORM.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(Number(NEWTODOBTN.className));
+    console.log("form is submitted");
+    console.log(inputHandling.extractTodoInput());
+    logic.addTodoToNewProject(Number(NEWTODOBTN.className), "HEE");
+    dom.displayTodoOfClickedProject(Number(NEWTODOBTN.className));
+    inputHandling.closeTodoDialog();
+  });
+
+  CANCELTODO.addEventListener("click", (e) => {
+    e.preventDefault();
+    inputHandling.closeTodoDialog();
   });
 };
 

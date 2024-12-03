@@ -1,14 +1,16 @@
 const inputHandling = (function () {
-  const FORM = document.querySelector("#__project_form");
-  const projectDialog = document.querySelector("#__project_dialog");
+  const PROJECTFORM = document.querySelector("#__project_form");
+  const PROJECTDIALOG = document.querySelector("#__project_dialog");
+  const TODODIALOG = document.querySelector("#__todo_dialog");
+  const TODOFORM = document.querySelector("#__todo_form");
 
   function openProjectDialog() {
-    projectDialog.showModal();
+    PROJECTDIALOG.showModal();
   }
 
   function closeProjectDialog() {
-    FORM.reset();
-    projectDialog.close();
+    PROJECTFORM.reset();
+    PROJECTDIALOG.close();
   }
 
   function extractProjectInput() {
@@ -20,7 +22,28 @@ const inputHandling = (function () {
     }
   }
 
-  return { openProjectDialog, closeProjectDialog, extractProjectInput };
+  function openTodoDialog() {
+    TODODIALOG.showModal();
+  }
+
+  function closeTodoDialog() {
+    TODOFORM.reset();
+    TODODIALOG.close();
+  }
+
+  function extractTodoInput() {
+    const formData = new FormData(TODOFORM);
+    return formData;
+  }
+
+  return {
+    openProjectDialog,
+    closeProjectDialog,
+    extractProjectInput,
+    openTodoDialog,
+    closeTodoDialog,
+    extractTodoInput,
+  };
 })();
 
 export { inputHandling };

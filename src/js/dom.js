@@ -6,6 +6,7 @@ import {
 } from "./helperfunction";
 
 const dom = (function () {
+  const CREATETODOBTN = document.querySelector("#__create_new_todo_btn");
   const DOM = document.getElementById("__dom");
   const projectContainer = document.getElementById("__project_section");
   const clearDOM = function () {
@@ -32,6 +33,7 @@ const dom = (function () {
 
   const displayTodoOfClickedProject = function (pid) {
     clearDOM();
+    CREATETODOBTN.setAttribute("class", pid);
     const clickedProject = logic.allProjects.find(
       (item) => item.pid === parseInt(pid),
     );
