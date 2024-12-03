@@ -37,6 +37,15 @@
         <button id="__todo_cancel_btn_form" type="reset">Cancel</button>
       </form>
     </dialog>
-    <dialog id="__project_dialog"></dialog>
+    <dialog id="__project_dialog">
+      <form method="dialog" id="__project_form">
+        <label for="__project_title_form">Title:</label>
+        <input type="text" id="__project_title_form" name="title" required />
+        <div>
+          <button id="__project_save_btn_form" value="save">Add</button>
+          <button id="__project_cancel_btn_form" value="cancel">cancel</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>

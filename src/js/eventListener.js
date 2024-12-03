@@ -1,11 +1,14 @@
 import { dom } from "./dom";
 import { logic } from "./logic";
+import { inputHandling } from "./form";
 
 const attachEventListenersToProjects = () => {
   const DOM = document.getElementById("__dom");
   const PROJECTSECTION = document.getElementById("__project_section");
   const ALLTODOS = document.getElementById("__all_todos");
   const NEWPROJECTBTN = document.getElementById("__create_new_project");
+  const CANCELPROJECT = document.getElementById("__project_cancel_btn_form");
+  const PROJECTFORM = document.getElementById("__project_form");
 
   ALLTODOS.addEventListener("click", dom.displayAllTodos);
 
@@ -36,8 +39,20 @@ const attachEventListenersToProjects = () => {
     }
   });
 
-  NEWPROJECTBTN.addEventListener("click", () => {
-    logic.createNewProject("alphabetagamatheta"), dom.displayAllProjects();
+  NEWPROJECTBTN.addEventListener("click", (e) => {
+    inputHandling.openProjectDialog();
+  });
+
+  PROJECTFORM.addEventListener("submit", (e) => {
+    e.preventDefault();
+    logic.createNewProject(inputHandling.extractProjectInput());
+    dom.displayAllProjects();
+    inputHandling.closeProjectDialog();
+  });
+
+  CANCELPROJECT.addEventListener("click", (e) => {
+    e.preventDefault();
+    inputHandling.closeProjectDialog();
   });
 };
 

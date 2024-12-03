@@ -90,4 +90,12 @@ body {
       }
     }
   }
+  #__project_form {
+    div {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
 }
