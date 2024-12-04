@@ -1,10 +1,10 @@
 class Todo {
   static todoCounter = 0;
-  constructor(title, description, priority, notes) {
+  constructor(title, dueDate, description, priority, notes) {
     this.tid = Todo.todoCounter++;
     this.title = title;
     this.description = description;
-    //this.dueDate = dueDate;
+    this.dueDate = dueDate;
     this.priority = priority;
     this.notes = notes;
     this.checklist = false;

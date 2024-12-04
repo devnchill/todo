@@ -1,3 +1,5 @@
+import { Todo } from "./todo";
+
 const inputHandling = (function () {
   const PROJECTFORM = document.querySelector("#__project_form");
   const PROJECTDIALOG = document.querySelector("#__project_dialog");
@@ -33,7 +35,11 @@ const inputHandling = (function () {
 
   function extractTodoInput() {
     const formData = new FormData(TODOFORM);
-    return formData;
+    const { title, description, priority, notes } = Object.fromEntries(
+      formData.entries(),
+    );
+    const todo = new Todo(title, description, priority, notes);
+    return todo;
   }
 
   return {

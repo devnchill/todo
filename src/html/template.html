@@ -37,7 +37,24 @@
         <label for="__todo_date_form">Date:</label>
         <input type="date" id="__todo_date_form" name="date" required />
 
-        <button id="__todo_save_btn_form">Save</button>
+        <label for="__todo_description_form">Description:</label>
+        <input
+          type="text"
+          id="__todo_description_form"
+          name="description"
+          required
+        />
+
+        <label for="__todo_priority">Priority</label>
+        <select>
+          <option value="high">high</option>
+          <option value="low">low</option>
+        </select>
+
+        <label for="__todo_notes_form">notes:</label>
+        <input type="text" id="__todo_notes_form" name="notes" required />
+
+        <button type="submit" id="__todo_save_btn_form">Save</button>
         <button id="__todo_cancel_btn_form" type="reset">Cancel</button>
       </form>
     </dialog>

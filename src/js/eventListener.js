@@ -1,6 +1,7 @@
 import { dom } from "./dom";
 import { logic } from "./logic";
 import { inputHandling } from "./form";
+import { Todo } from "./todo";
 
 const attachEventListenersToProjects = () => {
   const DOM = document.getElementById("__dom");
@@ -64,12 +65,12 @@ const attachEventListenersToProjects = () => {
 
   TODOFORM.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(Number(NEWTODOBTN.className));
-    console.log("form is submitted");
-    console.log(inputHandling.extractTodoInput());
-    logic.addTodoToNewProject(Number(NEWTODOBTN.className), "HEE");
+    logic.addTodoToNewProject(
+      Number(NEWTODOBTN.className),
+      inputHandling.extractTodoInput(),
+    );
     dom.displayTodoOfClickedProject(Number(NEWTODOBTN.className));
-    inputHandling.closeTodoDialog();
+    inputHandling.closeTodoDialog(e.target);
   });
 
   CANCELTODO.addEventListener("click", (e) => {
