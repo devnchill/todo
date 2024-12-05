@@ -6,7 +6,7 @@ class Project {
     this.todos = todos;
   }
 
-  newName = (name) => {
+  rename = (name) => {
     this.name = name;
   };
 }

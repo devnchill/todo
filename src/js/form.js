@@ -35,10 +35,15 @@ const inputHandling = (function () {
 
   function extractTodoInput() {
     const formData = new FormData(TODOFORM);
-    const { title, description, priority, notes } = Object.fromEntries(
+    console.log(
+      "This is original form object :",
+      Object.fromEntries(formData.entries()),
+    );
+    const { title, date, description, priority, notes } = Object.fromEntries(
       formData.entries(),
     );
-    const todo = new Todo(title, description, priority, notes);
+    const todo = new Todo(title, date, description, priority, notes);
+    console.log("This is todo :", todo);
     return todo;
   }
 
