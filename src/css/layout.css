@@ -98,4 +98,21 @@ body {
       align-items: center;
     }
   }
+  #__todo_form {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "title date"
+      "description priority"
+      "notes";
+
+    #__todo_form > div:nth-child(1) {
+      grid-area: title;
+    }
+    #__todo_form > div:nth-child(2) {
+      grid-area: date;
+    }
+  }
 }

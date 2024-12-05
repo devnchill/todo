@@ -3,6 +3,7 @@ import {
   createTodoForAll,
   createProjectElement,
   createTodoForSpecificProject,
+  createDefaultProjectElement,
 } from "./helperfunction";
 
 const dom = (function () {
@@ -17,7 +18,11 @@ const dom = (function () {
     projectContainer.innerHTML = "";
     const arrayOfAllProjects = logic.allProjects;
     arrayOfAllProjects.forEach((item) => {
-      createProjectElement(item);
+      if (item.pid === 0) {
+        createDefaultProjectElement(item);
+      } else {
+        createProjectElement(item);
+      }
     });
   };
 

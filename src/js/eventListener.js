@@ -1,7 +1,6 @@
 import { dom } from "./dom";
 import { logic } from "./logic";
 import { inputHandling } from "./form";
-import { Todo } from "./todo";
 
 const attachEventListenersToProjects = () => {
   const DOM = document.getElementById("__dom");
@@ -40,6 +39,7 @@ const attachEventListenersToProjects = () => {
       let pid = Number(e.target.id);
       logic.deleteProject(pid);
       dom.displayAllProjects();
+      dom.displayAllTodos();
     }
   });
 

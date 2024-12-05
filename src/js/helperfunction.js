@@ -25,6 +25,14 @@ function createTodoForAll(todo) {
   DOM.appendChild(todoDiv);
 }
 
+function createDefaultProjectElement(item) {
+  const projectDiv = createCustomElement("div", item.pid, "", ["project"]);
+  const projectTitle = createCustomElement("p", item.pid, item.name, [
+    "project-title",
+  ]);
+  projectDiv.appendChild(projectTitle);
+  projectContainer.appendChild(projectDiv);
+}
 function createProjectElement(item) {
   const projectDiv = createCustomElement("div", item.pid, "", ["project"]);
   const projectTitle = createCustomElement("p", item.pid, item.name, [
@@ -55,4 +63,9 @@ function createTodoForSpecificProject(todo) {
   DOM.appendChild(todoDiv);
 }
 
-export { createTodoForAll, createProjectElement, createTodoForSpecificProject };
+export {
+  createTodoForAll,
+  createProjectElement,
+  createDefaultProjectElement,
+  createTodoForSpecificProject,
+};
