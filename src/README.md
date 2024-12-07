@@ -5,3 +5,4 @@ Icon by <a class="link_pro" href="https://freeicons.io/ethics-icon-set-31168/app
 Icon by <a class="link_pro" href="https://freeicons.io/weather-2/icon-sun-lineal-color-icon-28915">Oscar EstMont</a> on <a href="https://freeicons.io">freeicons.io</a>
 Icon by <a class="link_pro" href="https://freeicons.io/ios-edge-glyph/moon-icon-29411">Fasil</a> on <a href="https://freeicons.io">freeicons.io</a>
 Icon by <a class="link_pro" href="https://freeicons.io/vector-and-svg-logos-icons-09/github-icon-icon-icon">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a>
+Icon by <a class="link_pro" href="https://freeicons.io/business-and-online-icons/sidebar-icon-icon">Raj Dev</a> on <a href="https://freeicons.io">freeicons.io</a>

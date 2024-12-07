@@ -1,0 +1,75 @@
+@import "./reset.css";
+
+:root {
+  --txt-color-light: rgb(0, 0, 0);
+  --txt-color-dark: rgb(255, 255, 255);
+}
+
+html,
+body {
+  height: 100%;
+}
+body.dark {
+  --txt-color: var(--txt-color-dark);
+}
+body {
+  --txt-color: var(--txt-color-light);
+  color: var(--txt-color);
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-rows: 5% 1fr 5%;
+  grid-template-columns: 20% 1fr;
+
+  header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+
+    #__toggle_sidebar .sidebar-svg {
+      height: 100%;
+      width: 1.5rem;
+    }
+
+    #__left_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      div > svg {
+        height: 100%;
+        width: 3rem;
+      }
+      div + div {
+        font-size: 3rem;
+
+        span {
+          color: green;
+        }
+      }
+    }
+    #__theme {
+      #__moon {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        width: 40px;
+        height: 80%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  sidebar {
+    grid-area: sidebar;
+  }
+
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+}
