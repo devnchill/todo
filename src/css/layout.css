@@ -25,6 +25,9 @@ body.dark {
   --footer-color: var(--footer-color-dark);
 }
 body {
+  button {
+    cursor: pointer;
+  }
   --anchor-color: var(--anchor-color-light);
   --sidebar-color: var(--bg-color-white);
   --bg-color: var(--bg-color-grey);
@@ -126,9 +129,14 @@ body {
         h2 {
           font-size: 2rem;
         }
-        svg {
-          width: 30px;
-          height: 20px;
+        button {
+          border: none;
+          background-color: var(--sidebar-color);
+          svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--txt-color);
+          }
         }
         border-bottom: 4px solid black;
         border-color: var(--txt-color);
@@ -138,6 +146,12 @@ body {
 
   main {
     grid-area: main;
+    display: grid;
+    grid-template-rows: 15% 1fr;
+    #__project_title {
+      background-color: var(--sidebar-color);
+      margin: 1rem;
+    }
   }
 
   footer {
@@ -158,5 +172,13 @@ body {
       width: 30px;
       fill: var(--txt-color);
     }
+  }
+  #__floating_button {
+    position: absolute;
+    width: 50px;
+    background-color: var(--bg-color);
+    bottom: 5%;
+    right: 5%;
+    border: none;
   }
 }
