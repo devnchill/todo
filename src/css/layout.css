@@ -1,12 +1,16 @@
 @import "./reset.css";
 
 :root {
-  --bg-color-light: rgb(255, 255, 255);
-  --txt-color-light: rgb(0, 0, 0);
-  --bg-color-dark: rgb(17, 24, 39);
-  --txt-color-dark: rgb(255, 255, 255);
+  --bg-color-white: rgb(254, 252, 254);
+  --bg-color-grey: rgb(242, 243, 245);
+  --bg-color-deep-blue: rgb(21, 32, 43);
+  --bg-color-light-blue: rgb(25, 39, 52);
   --anchor-color-light: rgb(125, 123, 178);
   --anchor-color-dark: rgb(152, 250, 242);
+  --txt-color-white: rgb(255, 255, 255);
+  --txt-color-dark: rgb(0, 0, 0);
+  --footer-color-dark: rgb(34, 48, 60);
+  --footer-color-light: rgb(242, 243, 245);
 }
 
 html,
@@ -14,14 +18,18 @@ body {
   height: 100%;
 }
 body.dark {
-  --bg-color: var(--bg-color-dark);
-  --txt-color: var(--txt-color-dark);
   --anchor-color: var(--anchor-color-dark);
+  --txt-color: var(--txt-color-white);
+  --sidebar-color: var(--bg-color-deep-blue);
+  --bg-color: var(--bg-color-light-blue);
+  --footer-color: var(--footer-color-dark);
 }
 body {
-  --bg-color: var(--bg-color-light);
-  --txt-color: var(--txt-color-light);
   --anchor-color: var(--anchor-color-light);
+  --sidebar-color: var(--bg-color-white);
+  --bg-color: var(--bg-color-grey);
+  --txt-color: var(--txt-color-dark);
+  --footer-color: var(--footer-color-light);
   svg:not(#__github_icon) {
     fill: var(--txt-color);
   }
@@ -36,6 +44,7 @@ body {
   grid-template-columns: 20% 1fr;
 
   header {
+    border-bottom: 2px solid var(--txt-color);
     padding: 10px 20px;
     grid-area: header;
     display: flex;
@@ -77,6 +86,7 @@ body {
   }
 
   sidebar {
+    background-color: var(--sidebar-color);
     grid-area: sidebar;
     padding: 25px;
     #__section_1 {
@@ -131,6 +141,7 @@ body {
   }
 
   footer {
+    background-color: var(--footer-color);
     grid-area: footer;
     display: flex;
     align-items: center;
