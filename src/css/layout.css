@@ -44,7 +44,7 @@ body {
     "sidebar main"
     "footer footer";
   grid-template-rows: 10% 1fr 5%;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: minmax(250px, 20%) 1fr;
 
   header {
     border-bottom: 2px solid var(--txt-color);
@@ -148,6 +148,7 @@ body {
     grid-area: main;
     display: grid;
     grid-template-rows: 15% 1fr;
+    min-width: 710px;
     #__project_title {
       background-color: var(--sidebar-color);
       margin: 1rem;
