@@ -1,7 +1,9 @@
 @import "./reset.css";
 
 :root {
+  --bg-color-light: rgb(255, 255, 255);
   --txt-color-light: rgb(0, 0, 0);
+  --bg-color-dark: rgb(0, 0, 0);
   --txt-color-dark: rgb(255, 255, 255);
 }
 
@@ -11,25 +13,32 @@ body {
 }
 body.dark {
   --txt-color: var(--txt-color-dark);
+  --bg-color: var(--bg-color-dark);
 }
 body {
+  --bg-color: var(--bg-color-light);
   --txt-color: var(--txt-color-light);
+  svg {
+    fill: var(--txt-color);
+  }
   color: var(--txt-color);
+  background-color: var(--bg-color);
   display: grid;
   grid-template-areas:
     "header header"
     "sidebar main"
     "footer footer";
-  grid-template-rows: 5% 1fr 5%;
+  grid-template-rows: 10% 1fr 5%;
   grid-template-columns: 20% 1fr;
 
   header {
+    padding: 10px 20px;
     grid-area: header;
     display: flex;
     justify-content: space-between;
 
     #__toggle_sidebar .sidebar-svg {
-      height: 100%;
+      height: 90%;
       width: 1.5rem;
     }
 
@@ -39,7 +48,7 @@ body {
       justify-content: center;
 
       div > svg {
-        height: 100%;
+        height: 90%;
         width: 3rem;
       }
       div + div {
@@ -51,11 +60,13 @@ body {
       }
     }
     #__theme {
+      display: flex;
+      align-items: center;
+
+      padding-top: 0;
       #__moon {
-        padding-bottom: 0;
-        margin-bottom: 0;
         width: 40px;
-        height: 80%;
+        height: 60%;
         cursor: pointer;
       }
     }
@@ -63,6 +74,49 @@ body {
 
   sidebar {
     grid-area: sidebar;
+    padding: 25px;
+    #__section_1 {
+      h2 {
+        font-size: 2rem;
+        padding-bottom: 5px;
+        border-bottom: 4px solid black;
+      }
+      .data-name {
+        font-size: 1.5rem;
+      }
+      #__all_tasks {
+        padding-top: 14px;
+      }
+      display: grid;
+      gap: 10px;
+      .section1-flex {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          width: 30px;
+          height: auto;
+        }
+      }
+    }
+    #__section_2 {
+      padding-top: 25px;
+      #__project_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+          font-size: 2rem;
+        }
+        svg {
+          width: 30px;
+          height: 20px;
+        }
+        border-bottom: 4px solid black;
+      }
+    }
   }
 
   main {
