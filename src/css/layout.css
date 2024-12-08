@@ -3,8 +3,10 @@
 :root {
   --bg-color-light: rgb(255, 255, 255);
   --txt-color-light: rgb(0, 0, 0);
-  --bg-color-dark: rgb(0, 0, 0);
+  --bg-color-dark: rgb(17, 24, 39);
   --txt-color-dark: rgb(255, 255, 255);
+  --anchor-color-light: rgb(125, 123, 178);
+  --anchor-color-dark: rgb(152, 250, 242);
 }
 
 html,
@@ -12,13 +14,15 @@ body {
   height: 100%;
 }
 body.dark {
-  --txt-color: var(--txt-color-dark);
   --bg-color: var(--bg-color-dark);
+  --txt-color: var(--txt-color-dark);
+  --anchor-color: var(--anchor-color-dark);
 }
 body {
   --bg-color: var(--bg-color-light);
   --txt-color: var(--txt-color-light);
-  svg {
+  --anchor-color: var(--anchor-color-light);
+  svg:not(#__github_icon) {
     fill: var(--txt-color);
   }
   color: var(--txt-color);
@@ -80,6 +84,7 @@ body {
         font-size: 2rem;
         padding-bottom: 5px;
         border-bottom: 4px solid black;
+        border-color: var(--txt-color);
       }
       .data-name {
         font-size: 1.5rem;
@@ -104,6 +109,7 @@ body {
     #__section_2 {
       padding-top: 25px;
       #__project_header {
+        padding-bottom: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -115,6 +121,7 @@ body {
           height: 20px;
         }
         border-bottom: 4px solid black;
+        border-color: var(--txt-color);
       }
     }
   }
@@ -125,5 +132,20 @@ body {
 
   footer {
     grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      margin: 1rem;
+    }
+    a {
+      text-decoration: none;
+      color: var(--anchor-color);
+    }
+    svg {
+      margin: 0 10px 0 10px;
+      width: 30px;
+      fill: var(--txt-color);
+    }
   }
 }
