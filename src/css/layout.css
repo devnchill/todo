@@ -48,6 +48,7 @@ body {
 
   header {
     border-bottom: 2px solid var(--txt-color);
+    border-color: rgb(31, 141, 77);
     padding: 10px 20px;
     grid-area: header;
     display: flex;
@@ -161,6 +162,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 800;
     div {
       margin: 1rem;
     }
