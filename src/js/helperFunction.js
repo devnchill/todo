@@ -36,6 +36,12 @@ function createTodoForAll(todo) {
     classList: ["todo-title"],
   });
 
+  const todoDate = createCustomElement({
+    tag: "p",
+    dataAttributes: { tid: todo.tid },
+    textContent: todo.dueDate,
+    classList: ["todo-date"],
+  });
   const todoRemoveBtn = createCustomElement({
     tag: "button",
     dataAttributes: { tid: todo.tid },
@@ -43,6 +49,14 @@ function createTodoForAll(todo) {
     classList: ["todo-remove-btn"],
   });
 
+  const todoCompleteBtn = createCustomElement({
+    tag: "button",
+    dataAttributes: { tid: todo.tid },
+    classList: ["todo-complete-btn"],
+  });
+
+  todoDiv.appendChild(todoCompleteBtn);
+  todoDiv.appendChild(todoDate);
   todoDiv.appendChild(todoTitle);
   todoDiv.appendChild(todoRemoveBtn);
   DOM.appendChild(todoDiv);
