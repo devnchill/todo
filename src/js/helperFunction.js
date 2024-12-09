@@ -22,7 +22,7 @@ function createCustomElement({
 }
 
 function createTodoForAll(todo) {
-  const DOM = document.getElementById("__dom");
+  const DOM = document.getElementById("__todo_list");
   const todoDiv = createCustomElement({
     tag: "div",
     dataAttributes: { tid: todo.tid },
@@ -93,7 +93,7 @@ function createProjectElement(item) {
 }
 
 function createTodoForSpecificProject(todo) {
-  const DOM = document.getElementById("__dom");
+  const DOM = document.getElementById("__todo_list");
   const todoDiv = createCustomElement({
     tag: "div",
     dataAttributes: { tid: todo.tid },

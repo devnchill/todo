@@ -1,12 +1,16 @@
 import { Project } from "./project.js";
-import * as Todos from "./demotodos.js";
+import * as Todos from "./demoTodos.js";
 
 const logic = (function () {
-  const defaultProject = new Project("Default Project", [Todos.todo1]);
-  const personal = new Project("Project", [Todos.todo2, Todos.todo3]);
+  const defaultProject = new Project("Default Project", [Todos.todo6,Todos.todo7]);
+  const school = new Project("School", [
+    Todos.todo1,
+    Todos.todo2,
+    Todos.todo3,
+  ]);
   const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
 
-  const allProjects = [defaultProject, personal, odin];
+  const allProjects = [defaultProject, school, odin];
 
   function createNewProject(name) {
     const createdProject = new Project(name);
