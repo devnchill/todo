@@ -2,24 +2,23 @@ import { Project } from "./project.js";
 import * as Todos from "./demoTodos.js";
 
 const logic = (function () {
-  const defaultProject = new Project("Default Project", [Todos.todo6,Todos.todo7]);
-  const school = new Project("School", [
-    Todos.todo1,
-    Todos.todo2,
-    Todos.todo3,
+  const defaultProject = new Project("Default Project", [
+    Todos.todo6,
+    Todos.todo7,
   ]);
+  const school = new Project("School", [Todos.todo1, Todos.todo2, Todos.todo3]);
   const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
 
   const allProjects = [defaultProject, school, odin];
 
-    function findTodoByTid(tid) {
+  function findTodoByTid(tid) {
     for (const project of allProjects) {
-      const todo = project.todos.find(todo => todo.tid === tid);
+      const todo = project.todos.find((todo) => todo.tid === tid);
       if (todo) {
-        return todo; 
+        return todo;
       }
     }
-    return null; 
+    return null;
   }
 
   function createNewProject(name) {
@@ -77,6 +76,36 @@ const logic = (function () {
     return null;
   }
 
+  const findTodaysTodos = function () {
+    const allProjects = logic.allProjects;
+    const allTodos = [];
+    allProjects.forEach((project) => {
+      project.todos.forEach((todo) => {
+        allTodos.push(todo);
+      });
+    });
+    const todaysTodo = allTodos.filter((todo) => {
+      const today = "2nd september 2006";
+      return todo.dueDate === today;
+    });
+    return todaysTodo;
+  };
+
+  const findThisWeeksTodos = function () {
+    const allProjects = logic.allProjects;
+    const allTodos = [];
+    allProjects.forEach((project) => {
+      project.todos.forEach((todo) => {
+        allTodos.push(todo);
+      });
+    });
+    const weeksTodo = allTodos.filter((todo) => {
+      const today = "weeks";
+      return todo.dueDate === today;
+    });
+    return weeksTodo;
+  };
+
   return {
     createNewProject,
     addTodoToDefaultProject,
@@ -85,7 +114,8 @@ const logic = (function () {
     deleteTodo,
     deleteProject,
     identifyProject,
-    findTodoByTid
+    findTodoByTid,
+    findTodaysTodos,
   };
 })();
 

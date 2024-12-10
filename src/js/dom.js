@@ -51,7 +51,16 @@ const dom = (function () {
     }
   };
 
+  const displayTodaysTodo = () => {
+    clearDOM();
+    const todaysTodos = logic.findTodaysTodos();
+    todaysTodos.forEach((todo) => {
+      createTodoForAll(todo);
+    });
+  };
+
   return {
+    displayTodaysTodo,
     clearDOM,
     displayAllProjects,
     displayAllTodos,
