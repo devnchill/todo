@@ -150,6 +150,7 @@ body {
     display: grid;
     grid-template-rows: 15% 1fr;
     min-width: 710px;
+    padding: 0 10px 0 10px;
     #__project_title {
       background-color: var(--sidebar-color);
       margin: 1rem;
@@ -159,6 +160,33 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 10px;
+        height: 3rem;
+
+        .todo-date {
+          width: 220px;
+          text-align: left;
+        }
+
+        .todo-title {
+          flex-grow: 1;
+        }
+        .todo-complete-btn {
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+        }
+        .todo-remove-btn {
+          border: none;
+          background-color: var(--bg-color);
+          width: 80px;
+
+          .fas {
+            width: 80%;
+            height: 100%;
+            color: var(--txt-color);
+          }
+        }
       }
     }
   }

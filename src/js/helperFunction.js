@@ -45,10 +45,12 @@ function createTodoForAll(todo) {
   const todoRemoveBtn = createCustomElement({
     tag: "button",
     dataAttributes: { tid: todo.tid },
-    textContent: "remove",
     classList: ["todo-remove-btn"],
   });
+  const removeIcon = document.createElement("i");
+  removeIcon.classList.add("fas", "fa-trash-alt");
 
+  todoRemoveBtn.appendChild(removeIcon);
   const todoCompleteBtn = createCustomElement({
     tag: "button",
     dataAttributes: { tid: todo.tid },
