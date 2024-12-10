@@ -1,4 +1,5 @@
 import { Todo } from "./todo";
+import { format } from "date-fns";
 
 const inputHandling = (function () {
   const PROJECTFORM = document.querySelector("#__project_form");
@@ -35,15 +36,11 @@ const inputHandling = (function () {
 
   function extractTodoInput() {
     const formData = new FormData(TODOFORM);
-    console.log(
-      "This is original form object :",
-      Object.fromEntries(formData.entries()),
-    );
     const { title, date, description, priority } = Object.fromEntries(
       formData.entries(),
     );
-    const todo = new Todo(title, date, description, priority);
-    console.log("This is todo :", todo);
+    const formattedDate = format(new Date(date), "dd/MM/yyyy");
+    const todo = new Todo(title, formattedDate, description, priority);
     return todo;
   }
 
