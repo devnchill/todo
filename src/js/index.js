@@ -1,4 +1,4 @@
 import "/src/css/layout.css";
-import "./themeSwitch"
+import "./themeSwitch";
 import { dom } from "./dom";
-dom.displayAllTodos();
+dom.displayAllProjects();

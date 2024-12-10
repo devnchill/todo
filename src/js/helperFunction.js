@@ -99,10 +99,13 @@ function createProjectElement(item) {
   const projectDeleteButton = createCustomElement({
     tag: "button",
     dataAttributes: { pid: item.pid },
-    textContent: "remove",
     classList: ["project-remove-btn"],
   });
 
+  const removeIcon = document.createElement("i");
+  removeIcon.classList.add("fas", "fa-trash-alt");
+
+  projectDeleteButton.appendChild(removeIcon);
   projectDiv.appendChild(projectTitle);
   projectDiv.appendChild(projectDeleteButton);
   projectContainer.appendChild(projectDiv);

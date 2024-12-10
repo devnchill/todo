@@ -109,6 +109,7 @@ body {
       display: grid;
       gap: 10px;
       .section1-flex {
+        cursor: pointer;
         display: flex;
         align-items: center;
 
@@ -124,6 +125,7 @@ body {
       padding-top: 25px;
       #__project_header {
         padding-bottom: 5px;
+        margin-bottom: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -142,6 +144,26 @@ body {
         border-bottom: 4px solid black;
         border-color: var(--txt-color);
       }
+      #__project_list {
+        display: grid;
+        gap: 10px;
+        .project {
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .project-remove-btn {
+            border: none;
+            background-color: var(--sidebar-color);
+            .fas {
+              width: 80%;
+              height: 100%;
+              color: var(--txt-color);
+            }
+          }
+        }
+      }
     }
   }
 
@@ -157,6 +179,7 @@ body {
     }
     #__todo_list {
       .todo {
+        margin-left: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
