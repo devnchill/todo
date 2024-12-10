@@ -105,7 +105,12 @@ const logic = (function () {
     });
     return weeksTodo;
   };
+
+  const findProjectFromPid = (pid) => {
+    return allProjects.find((project) => project.pid === pid);
+  };
   return {
+    findProjectFromPid,
     createNewProject,
     addTodoToDefaultProject,
     addTodoToNewProject,

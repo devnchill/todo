@@ -174,12 +174,17 @@ body {
     grid-template-rows: 15% 1fr;
     min-width: 710px;
     padding: 0 10px 0 10px;
-    #__main_header {
+    #__outer_main {
       background-color: var(--sidebar-color);
-      color: var(--txt-color);
       margin: 1rem;
-      font-size: 5rem;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      #__main_header {
+        color: var(--txt-color);
+        font-size: 3rem;
+        text-align: center;
+      }
     }
     #__todo_list {
       .todo-completed {
