@@ -42,6 +42,23 @@ function createTodoForAll(todo) {
     textContent: todo.dueDate,
     classList: ["todo-date"],
   });
+  const todoImportantBtn = createCustomElement({
+    tag: "button",
+    dataAttributes: { tid: todo.tid },
+    classList: ["todo-important-btn"],
+  });
+
+  const importantIcon = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  importantIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  importantIcon.setAttribute("width", "24");
+  importantIcon.setAttribute("height", "24");
+  importantIcon.setAttribute("viewBox", "0 0 24 24");
+  importantIcon.setAttribute("class", "important-star");
+  importantIcon.innerHTML = `<polygon points="12 2 15 9 22 9 17 14 18 22 12 18 6 22 7 14 2 9 9 9"/>`;
+
   const todoRemoveBtn = createCustomElement({
     tag: "button",
     dataAttributes: { tid: todo.tid },
@@ -50,6 +67,7 @@ function createTodoForAll(todo) {
   const removeIcon = document.createElement("i");
   removeIcon.classList.add("fas", "fa-trash-alt");
 
+  todoImportantBtn.appendChild(importantIcon);
   todoRemoveBtn.appendChild(removeIcon);
   const todoCompleteBtn = createCustomElement({
     tag: "button",
@@ -60,6 +78,7 @@ function createTodoForAll(todo) {
   todoDiv.appendChild(todoCompleteBtn);
   todoDiv.appendChild(todoDate);
   todoDiv.appendChild(todoTitle);
+  todoDiv.appendChild(todoImportantBtn);
   todoDiv.appendChild(todoRemoveBtn);
   DOM.appendChild(todoDiv);
 }

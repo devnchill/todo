@@ -12,6 +12,16 @@ const logic = (function () {
 
   const allProjects = [defaultProject, school, odin];
 
+    function findTodoByTid(tid) {
+    for (const project of allProjects) {
+      const todo = project.todos.find(todo => todo.tid === tid);
+      if (todo) {
+        return todo; 
+      }
+    }
+    return null; 
+  }
+
   function createNewProject(name) {
     const createdProject = new Project(name);
     allProjects.push(createdProject);
@@ -75,6 +85,7 @@ const logic = (function () {
     deleteTodo,
     deleteProject,
     identifyProject,
+    findTodoByTid
   };
 })();
 

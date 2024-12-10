@@ -7,6 +7,7 @@ class Todo {
     this.dueDate = dueDate;
     this.priority = priority;
     this.checklist = false;
+    this.important = false;
   }
 
   renameTitle = (param) => {
@@ -16,6 +17,11 @@ class Todo {
   toggleComplete() {
     this.checklist = !this.checklist;
   }
+
+  toggleImportant() {
+    this.important = !this.important;
+  }
 }
 
 export { Todo };
+
