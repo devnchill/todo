@@ -7,7 +7,7 @@ import {
 } from "./helperFunction";
 
 const dom = (function () {
-  const CREATETODOBTN = document.querySelector("#__create_new_todo_btn");
+  const CREATETODOBTN = document.getElementById("__floating_button");
   const DOM = document.getElementById("__todo_list");
   const projectContainer = document.getElementById("__project_list");
   const clearDOM = function () {
@@ -38,13 +38,14 @@ const dom = (function () {
 
   const displayTodoOfClickedProject = function (pid) {
     clearDOM();
-    CREATETODOBTN.setAttribute("class", pid);
+    CREATETODOBTN.dataset.id = pid;
     const clickedProject = logic.allProjects.find(
       (item) => item.pid === parseInt(pid),
     );
     if (clickedProject) {
       clickedProject.todos.forEach((todo) => {
-        createTodoForSpecificProject(todo);
+        //createTodoForSpecificProject(todo);
+        createTodoForAll(todo);
       });
     } else {
       console.log("project not found");

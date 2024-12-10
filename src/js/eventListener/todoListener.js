@@ -1,7 +1,12 @@
 import { logic } from "../logic";
+import { inputHandling } from "../form";
+import { dom } from "../dom";
 
 const listenersToTodo = () => {
   const TODOLIST = document.getElementById("__todo_list");
+  const ADDTODO = document.getElementById("__floating_button");
+  const TODOFORM = document.getElementById("__todo_form");
+  const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
 
   TODOLIST.addEventListener("click", (e) => {
     if (
@@ -21,6 +26,25 @@ const listenersToTodo = () => {
         }
       }
     }
+  });
+
+  ADDTODO.addEventListener("click", () => {
+    inputHandling.openTodoDialog();
+  });
+
+  TODOFORM.addEventListener("submit", (e) => {
+    e.preventDefault();
+    logic.addTodoToNewProject(
+      Number(ADDTODO.dataset.id),
+      inputHandling.extractTodoInput(),
+    );
+    dom.displayTodoOfClickedProject(Number(ADDTODO.dataset.id));
+    inputHandling.closeTodoDialog(e.target);
+  });
+
+  CANCELTODO.addEventListener("click", (e) => {
+    e.preventDefault();
+    inputHandling.closeTodoDialog();
   });
 };
 
