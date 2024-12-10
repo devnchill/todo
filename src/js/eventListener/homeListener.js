@@ -1,5 +1,4 @@
 import { dom } from "../dom";
-import { logic } from "../logic";
 
 const listenersToHome = () => {
   const SECTION1 = document.getElementById("__section_1");

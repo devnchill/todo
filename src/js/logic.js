@@ -105,7 +105,6 @@ const logic = (function () {
     });
     return weeksTodo;
   };
-
   return {
     createNewProject,
     addTodoToDefaultProject,

@@ -36,11 +36,18 @@ const inputHandling = (function () {
 
   function extractTodoInput() {
     const formData = new FormData(TODOFORM);
-    const { title, date, description, priority } = Object.fromEntries(
+    let { title, date, description, priority } = Object.fromEntries(
       formData.entries(),
     );
-    const formattedDate = format(new Date(date), "dd/MM/yyyy");
-    const todo = new Todo(title, formattedDate, description, priority);
+    date = format(new Date(date), "do MMMM, yyyy");
+    const priorityMap = {
+      0: "low",
+      50: "medium",
+      100: "high",
+    };
+    priority = priorityMap[priority] || "invalid priority";
+    const todo = new Todo(title, date, description, priority);
+    console.log(todo);
     return todo;
   }
 

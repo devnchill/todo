@@ -1,5 +1,5 @@
-import sunIcon from "../assests/icon/sun.png";
-import moonIcon from "../assests/icon/moon.png";
+import sunIcon from "../assets/icon/sun.png";
+import moonIcon from "../assets/icon/moon.png";
 
 const themeSwitcher = document.querySelector("#__moon");
 

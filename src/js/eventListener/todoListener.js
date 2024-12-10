@@ -9,22 +9,28 @@ const listenersToTodo = () => {
   const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
 
   TODOLIST.addEventListener("click", (e) => {
-    if (
-      e.target.closest(".todo") &&
-      e.target.classList.contains("important-star")
-    ) {
-      console.log("Star clicked!");
-      const todoItem = e.target.closest(".todo");
-      const tidOfTodo = Number(todoItem.dataset.tid);
-      const starIcon = todoItem.querySelector(".important-star");
-      const todo = logic.findTodoByTid(tidOfTodo);
+    const starIcon = e.target.closest(".important-star");
+    const todoItem = e.target.closest(".todo");
+    const completeButton = e.target.closest(".todo-complete-btn");
 
-      if (todo) {
-        todo.toggleImportant();
-        if (starIcon) {
-          starIcon.classList.toggle("active");
-        }
+    if (starIcon && todoItem) {
+      console.log("Star clicked!");
+      const tidOfTodo = Number(todoItem.dataset.tid);
+      const todo = logic.findTodoByTid(tidOfTodo);
+      if (!todo) {
+        console.error("Todo not found with the given tid:", tid);
+        return;
       }
+      todo.toggleImportant();
+      starIcon.classList.toggle("active");
+    } else if (completeButton && todoItem) {
+      const todo = logic.findTodoByTid(Number(todoItem.dataset.tid));
+      if (!todo) {
+        console.log("Todo not found with given tid:", tid);
+        return;
+      }
+      todo.toggleComplete();
+      todoItem.classList.toggle("todo-completed");
     }
   });
 

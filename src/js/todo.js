@@ -6,7 +6,7 @@ class Todo {
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.checklist = false;
+    this.complete = false;
     this.important = false;
   }
 
@@ -15,13 +15,37 @@ class Todo {
   };
 
   toggleComplete() {
-    this.checklist = !this.checklist;
+    this.complete = !this.complete;
   }
 
   toggleImportant() {
     this.important = !this.important;
   }
+
+  editTodo(title, description, dueDate, priority) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+  }
+  getPriorityClass() {
+    if (this.priority === "high") return "priority-high";
+    if (this.priority === "medium") return "priority-medium";
+    if (this.priority === "low") return "priority-low";
+    return "";
+  }
+  updatePriorityClass(todoElement) {
+    todoElement.classList.remove(
+      "priority-high",
+      "priority-medium",
+      "priority-low",
+    );
+
+    const priorityClass = this.getPriorityClass();
+    if (priorityClass) {
+      todoElement.classList.add(priorityClass);
+    }
+  }
 }
 
 export { Todo };
-
