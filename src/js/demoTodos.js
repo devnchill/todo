@@ -10,34 +10,34 @@ console.log(todo1.toggleImportant);
 
 const todo2 = new Todo(
   "Chemistry Homework",
-  "1nd september 2006",
+  "1st september 2006",
   "do chemistry homework by the end of this week",
   "high",
 );
 
 const todo3 = new Todo(
   "Maths Homework",
-  "8nd september 2006",
+  "8th september 2006",
   "do maths homework by the end of this week",
   "high",
 );
 
 const todo4 = new Todo(
   "building TTT ",
-  "3nd september 2006",
+  "3rd september 2006",
   "finish working on Tic Tac Toe game by this weekend",
   "high",
 );
 
 const todo5 = new Todo(
   "building todo ",
-  "9nd september 2006",
+  "9th september 2006",
   "finish working on TODO game by this weekend",
   "high",
 );
 const todo6 = new Todo(
   "Mow Grass",
-  "12nd september 2006",
+  "12th september 2006",
   "Finish mowing grass this weekend",
   "high",
 );
