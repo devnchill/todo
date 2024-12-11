@@ -60,7 +60,7 @@ function createTodoForAll(todo) {
   importantIcon.innerHTML = `<polygon points="12 2 15 9 22 9 17 14 18 22 12 18 6 22 7 14 2 9 9 9"/>`;
 
   if (todo.important) {
-    importantIcon.classList.add("active"); 
+    importantIcon.classList.add("active");
   }
   const todoRemoveBtn = createCustomElement({
     tag: "button",
@@ -77,6 +77,10 @@ function createTodoForAll(todo) {
     dataAttributes: { tid: todo.tid },
     classList: ["todo-complete-btn"],
   });
+
+  if(todo.complete === true){
+    todoDiv.classList.add("todo-completed");
+  }
 
   todoDiv.appendChild(todoCompleteBtn);
   todoDiv.appendChild(todoDate);

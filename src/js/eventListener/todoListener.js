@@ -7,11 +7,13 @@ const listenersToTodo = () => {
   const ADDTODO = document.getElementById("__floating_button");
   const TODOFORM = document.getElementById("__todo_form");
   const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
+  const MAINHEADER = document.getElementById("__main_header");
 
   TODOLIST.addEventListener("click", (e) => {
     const starIcon = e.target.closest(".important-star");
     const todoItem = e.target.closest(".todo");
     const completeButton = e.target.closest(".todo-complete-btn");
+    const deleteTodoButton = e.target.closest(".todo-remove-btn");
 
     if (starIcon && todoItem) {
       console.log("Star clicked!");
@@ -31,6 +33,15 @@ const listenersToTodo = () => {
       }
       todo.toggleComplete();
       todoItem.classList.toggle("todo-completed");
+    } else if (deleteTodoButton && todoItem) {
+      const tid = Number(e.target.closest(".todo-remove-btn").dataset.tid);
+      const pid = logic.identifyProject(tid);
+      logic.deleteTodo(tid);
+      if (MAINHEADER.textContent === "All Task") {
+        dom.displayAllTodos();
+      } else {
+        dom.displayTodoOfClickedProject(pid);
+      }
     }
   });
 
