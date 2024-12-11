@@ -60,7 +60,25 @@ const dom = (function () {
     });
   };
 
+  const displayWeeksTodo = () => {
+    clearDOM();
+    const todaysTodos = logic.findThisWeeksTodos();
+    todaysTodos.forEach((todo) => {
+      createTodoForAll(todo);
+    });
+  };
+
+  const displayImportantTodos = () => {
+    clearDOM();
+    const importantTodos = logic.findimportantTodo();
+    importantTodos.forEach((todo) => {
+      createTodoForAll(todo);
+    });
+  };
+
   return {
+    displayImportantTodos,
+    displayWeeksTodo,
     displayTodaysTodo,
     clearDOM,
     displayAllProjects,

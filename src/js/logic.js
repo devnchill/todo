@@ -1,5 +1,6 @@
 import { Project } from "./project.js";
 import * as Todos from "./demoTodos.js";
+import { format, isWithinInterval, parse } from "date-fns";
 
 const logic = (function () {
   const defaultProject = new Project("Default Project", [
@@ -11,6 +12,10 @@ const logic = (function () {
 
   const allProjects = [defaultProject, school, odin];
 
+  const findProjectFromPid = (pid) => {
+    return allProjects.find((project) => project.pid === pid);
+  };
+
   function findTodoByTid(tid) {
     for (const project of allProjects) {
       const todo = project.todos.find((todo) => todo.tid === tid);
@@ -19,6 +24,17 @@ const logic = (function () {
       }
     }
     return null;
+  }
+
+  function allTodos() {
+    const allProjects = logic.allProjects;
+    const allTodos = [];
+    allProjects.forEach((project) => {
+      project.todos.forEach((todo) => {
+        allTodos.push(todo);
+      });
+    });
+    return allTodos;
   }
 
   function createNewProject(name) {
@@ -77,39 +93,33 @@ const logic = (function () {
   }
 
   const findTodaysTodos = function () {
-    const allProjects = logic.allProjects;
-    const allTodos = [];
-    allProjects.forEach((project) => {
-      project.todos.forEach((todo) => {
-        allTodos.push(todo);
-      });
-    });
-    const todaysTodo = allTodos.filter((todo) => {
-      const today = "2nd september 2006";
-      return todo.dueDate === today;
-    });
+    const todos = allTodos();
+    const todayFormatted = format(new Date(), "do MMMM, yyyy");
+    const todaysTodo = todos.filter((todo) => todo.dueDate === todayFormatted);
     return todaysTodo;
   };
 
   const findThisWeeksTodos = function () {
-    const allProjects = logic.allProjects;
-    const allTodos = [];
-    allProjects.forEach((project) => {
-      project.todos.forEach((todo) => {
-        allTodos.push(todo);
-      });
-    });
-    const weeksTodo = allTodos.filter((todo) => {
-      const today = "weeks";
-      return todo.dueDate === today;
+    const todos = allTodos();
+    const today = new Date();
+    const sevenDaysLater = new Date(today);
+    sevenDaysLater.setDate(today.getDate() + 7);
+    const weeksTodo = todos.filter((todo) => {
+      const dueDate = parse(todo.dueDate, "do MMMM, yyyy", new Date());
+      return isWithinInterval(dueDate, { start: today, end: sevenDaysLater });
     });
     return weeksTodo;
   };
 
-  const findProjectFromPid = (pid) => {
-    return allProjects.find((project) => project.pid === pid);
+  const findimportantTodo = function () {
+    const todos = allTodos();
+    const importantTodos = todos.filter((todo) => todo.important === true);
+    return importantTodos;
   };
+
   return {
+    findimportantTodo,
+    findThisWeeksTodos,
     findProjectFromPid,
     createNewProject,
     addTodoToDefaultProject,

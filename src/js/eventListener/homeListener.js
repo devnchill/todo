@@ -1,4 +1,5 @@
 import { dom } from "../dom";
+import { logic } from "../logic";
 
 const listenersToHome = () => {
   const SECTION1 = document.getElementById("__section_1");
@@ -6,7 +7,6 @@ const listenersToHome = () => {
 
   SECTION1.addEventListener("click", (e) => {
     const targetClass = e.target.closest(".section1-flex");
-    console.log(targetClass);
     if (targetClass && targetClass.id === "__all_tasks") {
       MAINHEADER.textContent = "All Task";
       dom.displayAllTodos();
@@ -14,9 +14,11 @@ const listenersToHome = () => {
       MAINHEADER.textContent = "Today's ToDo";
       dom.displayTodaysTodo();
     } else if (targetClass && targetClass.id === "__next_7_days") {
-      console.log("TODAYYYYYYYYYYYYYYYYYY");
+      MAINHEADER.textContent = "Weeks Todo";
+      dom.displayWeeksTodo();
     } else if (targetClass && targetClass.id === "__important") {
-      console.log("TODAYYYYYYYYYYYYYYYYYY");
+      MAINHEADER.textContent = "Important Todos";
+      dom.displayImportantTodos();
     }
   });
 };
