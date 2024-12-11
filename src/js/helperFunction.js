@@ -59,9 +59,9 @@ function createTodoForAll(todo) {
   importantIcon.setAttribute("class", "important-star");
   importantIcon.innerHTML = `<polygon points="12 2 15 9 22 9 17 14 18 22 12 18 6 22 7 14 2 9 9 9"/>`;
 
-if (todo.important) {
-  importantIcon.classList.add("active");  // 'active' class should make the star yellow
-}
+  if (todo.important) {
+    importantIcon.classList.add("active"); 
+  }
   const todoRemoveBtn = createCustomElement({
     tag: "button",
     dataAttributes: { tid: todo.tid },
