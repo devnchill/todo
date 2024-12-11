@@ -5,8 +5,8 @@ const todo1 = new Todo(
   "2nd March 2006",
   "I will have to do my physics homework",
   "high",
+  true,
 );
-console.log(todo1.toggleImportant);
 
 const todo2 = new Todo(
   "Chemistry Homework",
@@ -20,6 +20,7 @@ const todo3 = new Todo(
   "8th December 2006",
   "do maths homework by the end of this week",
   "high",
+  true,
 );
 
 const todo4 = new Todo(
@@ -47,4 +48,9 @@ const todo7 = new Todo(
   "Do a clen shave",
   "high",
 );
+todo1.important = true;
+todo2.important = true;
+todo7.complete = true;
+todo4.complete = true;
+
 export { todo1, todo2, todo3, todo4, todo5, todo6, todo7 };
