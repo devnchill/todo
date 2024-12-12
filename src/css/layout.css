@@ -293,9 +293,8 @@ body {
     border-radius: 10px;
     .view-flex {
       display: flex;
-      gap: 1rem;
       p:first-of-type {
-        flex-basis: 26%;
+        width: 130px;
       }
       p:nth-child(2) {
         text-align: left;

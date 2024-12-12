@@ -1,5 +1,5 @@
 import { Todo } from "./todo";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 
 const inputHandling = (function () {
   const PROJECTFORM = document.querySelector("#__project_form");
@@ -70,7 +70,17 @@ const inputHandling = (function () {
     important.textContent = todo.important;
   }
 
+  function openEditForm(todo) {
+    const title = document.getElementById("__todo_edit_title_form");
+    const description = document.getElementById("__todo_edit_description_form");
+    const priority = document.getElementById("__todo_edit_priority_form");
+    title.value = todo.title;
+    description.value = todo.description;
+    priority.value = todo.priority;
+  }
+
   return {
+    openEditForm,
     viewTodo,
     openProjectDialog,
     closeProjectDialog,

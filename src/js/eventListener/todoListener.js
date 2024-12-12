@@ -10,6 +10,9 @@ const listenersToTodo = () => {
   const MAINHEADER = document.getElementById("__main_header");
   const VIEWDIALOG = document.getElementById("__view_todo_dialog");
   const CLOSEVIEWTODODIALOGICON = document.querySelector(".fa-circle-xmark");
+  const EDITTODOBUTTON = document.getElementById("__edit_todo_button");
+  const EDITTODODIALOG = document.getElementById("__todo_edit_form_dialog");
+  const EDITTODOFORM = document.getElementById("__todo_edit_form");
 
   TODOLIST.addEventListener("click", (e) => {
     const starIcon = e.target.closest(".important-star");
@@ -44,9 +47,15 @@ const listenersToTodo = () => {
       } else {
         dom.displayTodoOfClickedProject(pid);
       }
-    } else if (todoItem && e.target.classList.contains("todo-title") || e.target.classList.contains("todo-date")) {
+    } else if (
+      (todoItem && e.target.classList.contains("todo-title")) ||
+      e.target.classList.contains("todo-date")
+    ) {
       const tid = Number(e.target.dataset.tid);
       VIEWDIALOG.dataset.tid = tid;
+      EDITTODODIALOG.dataset.tid = tid;
+      EDITTODOBUTTON.dataset.tid = tid;
+      EDITTODOFORM.dataset.tid = tid;
       const todo = logic.findTodoByTid(tid);
       inputHandling.viewTodo(todo);
       VIEWDIALOG.showModal();
@@ -74,6 +83,14 @@ const listenersToTodo = () => {
 
   CLOSEVIEWTODODIALOGICON.addEventListener("click", () => {
     VIEWDIALOG.close();
+  });
+
+  EDITTODOBUTTON.addEventListener("click", (e) => {
+    VIEWDIALOG.close();
+    EDITTODODIALOG.showModal();
+    const tid = Number(e.target.dataset.tid);
+    const todo = logic.findTodoByTid(tid);
+    inputHandling.openEditForm(todo);
   });
 };
 
