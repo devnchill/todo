@@ -8,6 +8,8 @@ const listenersToTodo = () => {
   const TODOFORM = document.getElementById("__todo_form");
   const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
   const MAINHEADER = document.getElementById("__main_header");
+  const VIEWDIALOG = document.getElementById("__view_todo_dialog");
+  const CLOSEVIEWTODODIALOGICON = document.querySelector(".fa-circle-xmark");
 
   TODOLIST.addEventListener("click", (e) => {
     const starIcon = e.target.closest(".important-star");
@@ -42,6 +44,12 @@ const listenersToTodo = () => {
       } else {
         dom.displayTodoOfClickedProject(pid);
       }
+    } else if (todoItem && e.target.classList.contains("todo-title") || e.target.classList.contains("todo-date")) {
+      const tid = Number(e.target.dataset.tid);
+      VIEWDIALOG.dataset.tid = tid;
+      const todo = logic.findTodoByTid(tid);
+      inputHandling.viewTodo(todo);
+      VIEWDIALOG.showModal();
     }
   });
 
@@ -62,6 +70,10 @@ const listenersToTodo = () => {
   CANCELTODO.addEventListener("click", (e) => {
     e.preventDefault();
     inputHandling.closeTodoDialog();
+  });
+
+  CLOSEVIEWTODODIALOGICON.addEventListener("click", () => {
+    VIEWDIALOG.close();
   });
 };
 

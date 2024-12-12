@@ -51,7 +51,27 @@ const inputHandling = (function () {
     return todo;
   }
 
+  function viewTodo(todo) {
+    const title = document.getElementById("__todo_title_modal").children[1];
+    const description = document.getElementById("__todo_description_modal")
+      .children[1];
+    const date = document.getElementById("__todo_date_modal").children[1];
+    const priority = document.getElementById("__todo_priority_modal")
+      .children[1];
+    const complete = document.getElementById("__todo_complete_modal")
+      .children[1];
+    const important = document.getElementById("__todo_important_modal")
+      .children[1];
+    title.textContent = todo.title;
+    description.textContent = todo.description;
+    date.textContent = todo.dueDate;
+    priority.textContent = todo.priority;
+    complete.textContent = todo.complete;
+    important.textContent = todo.important;
+  }
+
   return {
+    viewTodo,
     openProjectDialog,
     closeProjectDialog,
     extractProjectInput,

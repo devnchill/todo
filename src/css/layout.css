@@ -288,4 +288,29 @@ body {
     right: 5%;
     border: none;
   }
+
+  #__view_todo_dialog {
+    border-radius: 10px;
+    .view-flex {
+      display: flex;
+      gap: 1rem;
+      p:first-of-type {
+        flex-basis: 26%;
+      }
+      p:nth-child(2) {
+        text-align: left;
+        flex-grow: 1;
+      }
+    }
+    #__edit_todo_button_container {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        height: 30px;
+        width: 20%;
+      }
+    }
+  }
 }

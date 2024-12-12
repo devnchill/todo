@@ -28,24 +28,6 @@ class Todo {
     this.dueDate = dueDate;
     this.priority = priority;
   }
-  getPriorityClass() {
-    if (this.priority === "high") return "priority-high";
-    if (this.priority === "medium") return "priority-medium";
-    if (this.priority === "low") return "priority-low";
-    return "";
-  }
-  updatePriorityClass(todoElement) {
-    todoElement.classList.remove(
-      "priority-high",
-      "priority-medium",
-      "priority-low",
-    );
-
-    const priorityClass = this.getPriorityClass();
-    if (priorityClass) {
-      todoElement.classList.add(priorityClass);
-    }
-  }
 }
 
 export { Todo };
