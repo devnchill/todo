@@ -18,7 +18,6 @@ const listenersToProject = () => {
       MAINHEADER.textContent = project.name;
       dom.displayTodoOfClickedProject(pid);
     } else if (e.target.closest(".project-remove-btn")) {
-      console.log("444444444444444444");
       const pid = Number(e.target.closest(".project-remove-btn").dataset.pid);
       logic.deleteProject(pid);
       dom.displayAllProjects();

@@ -288,8 +288,45 @@ body {
     right: 5%;
     border: none;
   }
+  #__todo_dialog,
+  #__project_dialog,
+  #__view_todo_dialog,
+  #__todo_edit_form_dialog {
+    color: var(--txt-color);
+    background-color: var(--sidebar-color);
+    border-radius: 10px;
+  }
+
+  #__todo_dialog,
+  #__todo_edit_form_dialog {
+    form {
+      > div {
+        margin: 10px;
+        display: flex;
+        justify-items: flex-start;
+        label {
+          width: 100px;
+          flex-shrink: 0;
+        }
+        input {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+  #__project_dialog {
+    form {
+      div {
+        margin-top: 10px;
+      }
+    }
+  }
 
   #__view_todo_dialog {
+    .fa-regular {
+      cursor: pointer;
+      border-radius: 2px;
+    }
     border-radius: 10px;
     .view-flex {
       display: flex;
@@ -307,8 +344,16 @@ body {
       align-items: center;
       justify-content: center;
       button {
+        background-color: var(--bg-color);
+        color: var(--txt-color);
+        border: var(--txt-color);
         height: 30px;
         width: 20%;
+      }
+      button:hover {
+        border-radius: 2px;
+        color: black;
+        background: var(--anchor-color);
       }
     }
   }

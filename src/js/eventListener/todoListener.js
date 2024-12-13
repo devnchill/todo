@@ -12,7 +12,10 @@ const listenersToTodo = () => {
   const CLOSEVIEWTODODIALOGICON = document.querySelector(".fa-circle-xmark");
   const EDITTODOBUTTON = document.getElementById("__edit_todo_button");
   const EDITTODODIALOG = document.getElementById("__todo_edit_form_dialog");
-  const EDITTODOFORM = document.getElementById("__todo_edit_form");
+  const TODOEDITFORM = document.getElementById("__todo_edit_form");
+  const CLOSEEDITFORMBUTTON = document.getElementById(
+    "__todo_edit_cancel_btn_form",
+  );
 
   TODOLIST.addEventListener("click", (e) => {
     const starIcon = e.target.closest(".important-star");
@@ -55,7 +58,7 @@ const listenersToTodo = () => {
       VIEWDIALOG.dataset.tid = tid;
       EDITTODODIALOG.dataset.tid = tid;
       EDITTODOBUTTON.dataset.tid = tid;
-      EDITTODOFORM.dataset.tid = tid;
+      TODOEDITFORM.dataset.tid = tid;
       const todo = logic.findTodoByTid(tid);
       inputHandling.viewTodo(todo);
       VIEWDIALOG.showModal();
@@ -91,6 +94,23 @@ const listenersToTodo = () => {
     const tid = Number(e.target.dataset.tid);
     const todo = logic.findTodoByTid(tid);
     inputHandling.openEditForm(todo);
+  });
+
+  TODOEDITFORM.addEventListener("submit", (e) => {
+    console.log("hhhhhhhhhhh");
+    const tid = Number(e.target.dataset.tid);
+    const todo = logic.findTodoByTid(tid);
+    inputHandling.updateTodo(todo);
+    if (MAINHEADER.textContent === "All Task") {
+      dom.displayAllTodos();
+    } else {
+      logic.addTodoToDefaultProject;
+      const pid = logic.identifyProject(tid);
+      dom.displayTodoOfClickedProject(pid);
+    }
+  });
+  CLOSEEDITFORMBUTTON.addEventListener("click", () => {
+    EDITTODODIALOG.close();
   });
 };
 

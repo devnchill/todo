@@ -79,7 +79,28 @@ const inputHandling = (function () {
     priority.value = todo.priority;
   }
 
+  function updateTodo(todo) {
+    const TODOEDITFORM = document.getElementById("__todo_edit_form");
+    const formData = new FormData(TODOEDITFORM);
+    let { title, date, description, priority } = Object.fromEntries(
+      formData.entries(),
+    );
+    date = format(new Date(date), "do MMMM, yyyy");
+    const priorityMap = {
+      0: "low",
+      50: "medium",
+      100: "high",
+    };
+    priority = priorityMap[priority] || "invalid priority";
+
+    todo.title = title;
+    todo.dueDate = date;
+    todo.description = description;
+    todo.priority = priority;
+  }
+
   return {
+    updateTodo,
     openEditForm,
     viewTodo,
     openProjectDialog,
