@@ -1,3 +1,4 @@
+import { logic } from "./logic";
 import { Todo } from "./todo";
 import { format, parse } from "date-fns";
 
@@ -97,6 +98,7 @@ const inputHandling = (function () {
     todo.dueDate = date;
     todo.description = description;
     todo.priority = priority;
+    logic.syncStorage();
   }
 
   return {

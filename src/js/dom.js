@@ -16,7 +16,7 @@ const dom = (function () {
 
   const displayAllProjects = () => {
     projectContainer.innerHTML = "";
-    const arrayOfAllProjects = logic.allProjects;
+    const arrayOfAllProjects = logic.getAllProjects();
     arrayOfAllProjects.forEach((item) => {
       if (item.pid === 0) {
         createDefaultProjectElement(item);
@@ -29,7 +29,7 @@ const dom = (function () {
   const displayAllTodos = () => {
     clearDOM();
     MAINHEADER.textContent = "All Task";
-    logic.allProjects.forEach((project) => {
+    logic.getAllProjects().forEach((project) => {
       const todos = project.todos;
       todos.forEach((todo) => {
         createTodoForAll(todo);
@@ -40,9 +40,9 @@ const dom = (function () {
   const displayTodoOfClickedProject = function (pid) {
     clearDOM();
     CREATETODOBTN.dataset.id = pid;
-    const clickedProject = logic.allProjects.find(
-      (item) => item.pid === parseInt(pid),
-    );
+    const clickedProject = logic
+      .getAllProjects()
+      .find((item) => item.pid === parseInt(pid));
     if (clickedProject) {
       clickedProject.todos.forEach((todo) => {
         createTodoForAll(todo);

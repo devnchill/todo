@@ -12,6 +12,7 @@ const logic = (function () {
   const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
 
   let allProjects = [];
+  const getAllProjects = () => allProjects;
   const preDefinedProjects = [defaultProject, school, odin];
 
   function syncStorage(action = "save") {
@@ -69,31 +70,21 @@ const logic = (function () {
     }
   }
 
-  function addTodoToProject(pid, todo) {
-    const project = findProjectFromPid(pid);
-    if (project) {
-      project.todos.push(todo);
-      syncStorage("save");
-    } else {
-      console.error("Project not found");
-    }
-  }
-
   function deleteTodo(tid) {
     allProjects.forEach((project) => {
       project.todos = project.todos.filter((todo) => todo.tid !== tid);
+      syncStorage("save");
     });
-    syncStorage("save");
   }
 
   function deleteProject(pid) {
-    console.log("Before deletion:", logic.allProjects);
+    console.log("Before deletion:", allProjects);
 
-    logic.allProjects = logic.allProjects.filter(
-      (project) => project.pid !== pid,
-    );
-    console.log("After deletion:", logic.allProjects);
+    allProjects = allProjects.filter((project) => project.pid !== pid);
+    console.log("After deletion:", allProjects);
     syncStorage("save");
+    console.log(allProjects);
+    console.log(logic.allProjects);
   }
 
   function identifyProject(tid) {
@@ -126,14 +117,13 @@ const logic = (function () {
 
   return {
     syncStorage,
-    allProjects,
+    getAllProjects,
     findImportantTodos,
     findThisWeeksTodos,
     findProjectFromPid,
     createNewProject,
     addTodoToDefaultProject,
     addTodoToNewProject,
-    addTodoToProject,
     deleteTodo,
     deleteProject,
     identifyProject,

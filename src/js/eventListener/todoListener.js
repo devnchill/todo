@@ -33,6 +33,7 @@ const listenersToTodo = () => {
       }
       todo.toggleImportant();
       starIcon.classList.toggle("active");
+      logic.syncStorage("save");
     } else if (completeButton && todoItem) {
       const todo = logic.findTodoByTid(Number(todoItem.dataset.tid));
       if (!todo) {
@@ -41,6 +42,7 @@ const listenersToTodo = () => {
       }
       todo.toggleComplete();
       todoItem.classList.toggle("todo-completed");
+      logic.syncStorage("save");
     } else if (deleteTodoButton && todoItem) {
       const tid = Number(e.target.closest(".todo-remove-btn").dataset.tid);
       const pid = logic.identifyProject(tid);
