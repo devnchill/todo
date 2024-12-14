@@ -1,4 +1,5 @@
 import { Project } from "./project.js";
+import { Todo } from "./todo.js";
 import * as Todos from "./demoTodos.js";
 import { format, isWithinInterval, parse } from "date-fns";
 
@@ -10,121 +11,129 @@ const logic = (function () {
   const school = new Project("School", [Todos.todo1, Todos.todo2, Todos.todo3]);
   const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
 
-  const allProjects = [defaultProject, school, odin];
+  let allProjects = [];
+  const preDefinedProjects = [defaultProject, school, odin];
 
-  const findProjectFromPid = (pid) => {
-    return allProjects.find((project) => project.pid === pid);
-  };
+  function syncStorage(action = "save") {
+    if (action === "load") {
+      console.log("Loading from localStorage...");
 
-  function findTodoByTid(tid) {
-    for (const project of allProjects) {
-      const todo = project.todos.find((todo) => todo.tid === tid);
-      if (todo) {
-        return todo;
+      const storedProjects = JSON.parse(localStorage.getItem("allProjects"));
+      if (storedProjects) {
+        console.log("Found stored projects:", storedProjects);
+        allProjects = storedProjects.map((project) => {
+          const todos = project.todos.map((todo) =>
+            Object.assign(new Todo(), todo),
+          );
+          return Object.assign(new Project(), project, { todos });
+        });
+        console.log("Loaded projects into allProjects:", allProjects);
+      } else {
+        console.log("No stored projects found, using predefined projects.");
+        allProjects = preDefinedProjects;
+        syncStorage("save");
       }
+    } else if (action === "save") {
+      console.log("Saving projects to localStorage:", allProjects);
+      localStorage.setItem("allProjects", JSON.stringify(allProjects));
     }
-    return null;
   }
+  syncStorage("load");
 
-  function allTodos() {
-    const allProjects = logic.allProjects;
-    const allTodos = [];
-    allProjects.forEach((project) => {
-      project.todos.forEach((todo) => {
-        allTodos.push(todo);
-      });
-    });
-    return allTodos;
-  }
+  const getAllTodos = () => allProjects.flatMap((project) => project.todos);
+
+  const findProjectFromPid = (pid) =>
+    allProjects.find((project) => project.pid === pid);
+
+  const findTodoByTid = (tid) =>
+    getAllTodos().find((todo) => todo.tid === tid) || null;
 
   function createNewProject(name) {
     const createdProject = new Project(name);
     allProjects.push(createdProject);
+    syncStorage("save");
   }
 
   function addTodoToDefaultProject(todo) {
     defaultProject.todos.push(todo);
+    syncStorage("save");
   }
 
   function addTodoToNewProject(pid, todo) {
-    const project = allProjects.find((item) => item.pid === pid);
+    const project = findProjectFromPid(pid);
     if (project) {
       project.todos.push(todo);
+      syncStorage("save");
     } else {
-      console.log("Project not found");
+      console.error("Project not found");
+    }
+  }
+
+  function addTodoToProject(pid, todo) {
+    const project = findProjectFromPid(pid);
+    if (project) {
+      project.todos.push(todo);
+      syncStorage("save");
+    } else {
+      console.error("Project not found");
     }
   }
 
   function deleteTodo(tid) {
-    console.log("Running deleteTodo function");
     allProjects.forEach((project) => {
-      project.todos.forEach((todo, index) => {
-        if (todo.tid === tid) {
-          project.todos.splice(index, 1);
-        }
-      });
+      project.todos = project.todos.filter((todo) => todo.tid !== tid);
     });
+    syncStorage("save");
   }
 
   function deleteProject(pid) {
-    const projectIndex = allProjects.findIndex((item) => item.pid === pid);
-    if (projectIndex !== -1) {
-      allProjects.splice(projectIndex, 1);
-    } else {
-      console.log("Project not found");
-    }
+    console.log("Before deletion:", logic.allProjects);
+
+    logic.allProjects = logic.allProjects.filter(
+      (project) => project.pid !== pid,
+    );
+    console.log("After deletion:", logic.allProjects);
+    syncStorage("save");
   }
 
   function identifyProject(tid) {
-    console.log("Looking for tid:", tid);
     for (const project of allProjects) {
-      console.log(project);
-      for (const todo of project.todos) {
-        console.log(project.name);
-        console.log("COMPARING todo.tid:", todo.tid, "with tid:", Number(tid));
-        if (todo.tid === tid) {
-          console.log(project, "projectname");
-          return project.pid;
-        }
+      if (project.todos.some((todo) => todo.tid === tid)) {
+        return project.pid;
       }
     }
-    console.log("identifyingproject done");
     return null;
   }
 
-  const findTodaysTodos = function () {
-    const todos = allTodos();
+  const findTodaysTodos = () => {
     const todayFormatted = format(new Date(), "do MMMM, yyyy");
-    const todaysTodo = todos.filter((todo) => todo.dueDate === todayFormatted);
-    return todaysTodo;
+    return getAllTodos().filter((todo) => todo.dueDate === todayFormatted);
   };
 
-  const findThisWeeksTodos = function () {
-    const todos = allTodos();
+  const findThisWeeksTodos = () => {
     const today = new Date();
     const sevenDaysLater = new Date(today);
     sevenDaysLater.setDate(today.getDate() + 7);
-    const weeksTodo = todos.filter((todo) => {
+
+    return getAllTodos().filter((todo) => {
       const dueDate = parse(todo.dueDate, "do MMMM, yyyy", new Date());
       return isWithinInterval(dueDate, { start: today, end: sevenDaysLater });
     });
-    return weeksTodo;
   };
 
-  const findimportantTodo = function () {
-    const todos = allTodos();
-    const importantTodos = todos.filter((todo) => todo.important === true);
-    return importantTodos;
-  };
+  const findImportantTodos = () =>
+    getAllTodos().filter((todo) => todo.important === true);
 
   return {
-    findimportantTodo,
+    syncStorage,
+    allProjects,
+    findImportantTodos,
     findThisWeeksTodos,
     findProjectFromPid,
     createNewProject,
     addTodoToDefaultProject,
     addTodoToNewProject,
-    allProjects,
+    addTodoToProject,
     deleteTodo,
     deleteProject,
     identifyProject,

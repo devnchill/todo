@@ -18,9 +18,21 @@ const listenersToProject = () => {
       MAINHEADER.textContent = project.name;
       dom.displayTodoOfClickedProject(pid);
     } else if (e.target.closest(".project-remove-btn")) {
+      console.log(
+        "user clicked on deleteProject Button so allProject is ",
+        logic.allProjects,
+      );
       const pid = Number(e.target.closest(".project-remove-btn").dataset.pid);
-      logic.deleteProject(pid);
+      const allProjects = logic.deleteProject(pid);
+      console.log(
+        "project is deleted by calling deleteProject function from logic.deleteProject so value of allProjects is ",
+        allProjects,
+      );
       dom.displayAllProjects();
+      console.log(
+        "allProjects are displayed so now value is ",
+        allProjects,
+      );
       dom.displayAllTodos();
     }
   });

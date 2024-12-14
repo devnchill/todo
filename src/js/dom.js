@@ -73,7 +73,7 @@ const dom = (function () {
   const displayImportantTodos = () => {
     clearDOM();
     MAINHEADER.textContent = "Important Todos";
-    const importantTodos = logic.findimportantTodo();
+    const importantTodos = logic.findImportantTodos();
     importantTodos.forEach((todo) => {
       createTodoForAll(todo);
     });
