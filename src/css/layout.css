@@ -102,9 +102,6 @@ body {
     background-color: var(--sidebar-color);
     grid-area: sidebar;
     padding: 25px;
-    .active {
-      background-color: green;
-    }
     #__section_1 {
       h2 {
         font-size: 2rem;
