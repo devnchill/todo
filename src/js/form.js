@@ -36,10 +36,12 @@ const inputHandling = (function () {
   }
 
   function extractTodoInput() {
+    //will return object with all input field names and values
     const formData = new FormData(TODOFORM);
     let { title, date, description, priority } = Object.fromEntries(
       formData.entries(),
     );
+    //converting the obtained object to a regular object using deconstructuring to be able to perform operations on it
     date = format(new Date(date), "do MMMM, yyyy");
     const priorityMap = {
       0: "low",

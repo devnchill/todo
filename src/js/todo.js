@@ -1,5 +1,7 @@
 class Todo {
+  //will act like an id , will be shared across all instances and will be unique , increament by 1 everytime new instance is created
   static todoCounter = 0;
+
   constructor(title, dueDate, description, priority) {
     this.tid = Todo.todoCounter++;
     this.title = title;
@@ -9,10 +11,6 @@ class Todo {
     this.complete = false;
     this.important = false;
   }
-
-  renameTitle = (param) => {
-    this.title = param;
-  };
 
   toggleComplete() {
     this.complete = !this.complete;

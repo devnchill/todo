@@ -8,6 +8,7 @@ const listenersToProject = () => {
   const PROJECTFORM = document.getElementById("__project_form");
   const CANCELPROJECT = document.getElementById("__project_cancel_btn_form");
   const ADDPROJECT = document.getElementById("__add_project");
+
   PROJECTLIST.addEventListener("click", (e) => {
     if (
       e.target.classList.contains("project") ||
@@ -18,10 +19,6 @@ const listenersToProject = () => {
       MAINHEADER.textContent = project.name;
       dom.displayTodoOfClickedProject(pid);
     } else if (e.target.closest(".project-remove-btn")) {
-      console.log(
-        "user clicked on deleteProject Button so allProject is ",
-        logic.allProjects,
-      );
       const pid = Number(e.target.closest(".project-remove-btn").dataset.pid);
       const allProjects = logic.deleteProject(pid);
       console.log(
@@ -29,15 +26,12 @@ const listenersToProject = () => {
         allProjects,
       );
       dom.displayAllProjects();
-      console.log(
-        "allProjects are displayed so now value is ",
-        allProjects,
-      );
+      console.log("allProjects are displayed so now value is ", allProjects);
       dom.displayAllTodos();
     }
   });
 
-  ADDPROJECT.addEventListener("click", (e) => {
+  ADDPROJECT.addEventListener("click", () => {
     inputHandling.openProjectDialog();
   });
   PROJECTFORM.addEventListener("submit", (e) => {

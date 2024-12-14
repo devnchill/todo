@@ -1,28 +1,45 @@
+//imports Todo and Project class
 import { Project } from "./project.js";
 import { Todo } from "./todo.js";
+
+//imports sample Todos to prepopulated projects
 import * as Todos from "./demoTodos.js";
+
+//some inbuilt methods from this npm module
 import { format, isWithinInterval, parse } from "date-fns";
 
 const logic = (function () {
+  //Project constructor accepts 2 arguments , 1st is name which will be used for naming the instsance , 2nd is an array which will store the todos for that particular instance
   const defaultProject = new Project("Default Project", [
     Todos.todo6,
     Todos.todo7,
+    Todos.todo8,
   ]);
-  const school = new Project("School", [Todos.todo1, Todos.todo2, Todos.todo3]);
-  const odin = new Project("Odin", [Todos.todo4, Todos.todo5]);
+  const school = new Project("School", [
+    Todos.todo1,
+    Todos.todo2,
+    Todos.todo3,
+    Todos.todo9,
+  ]);
+  const odin = new Project("Odin", [Todos.todo4, Todos.todo5, Todos.todo10]);
+  const holidayPrep = new Project("Holiday Preparations", [Todos.todo11]);
+  let allProjects = [defaultProject, school, odin, holidayPrep];
+  const preDefinedProjects = [defaultProject, school, odin, holidayPrep]; // Include the new project
 
-  let allProjects = [];
+  //will always return allProjects which stores everything nested withing itself
   const getAllProjects = () => allProjects;
-  const preDefinedProjects = [defaultProject, school, odin];
 
+  //function to implement localStorage
   function syncStorage(action = "save") {
     if (action === "load") {
       console.log("Loading from localStorage...");
 
+      //retrieving allProjects from localStorage if present otherwise using preDefinedProjects as allProjects and then adding it to localStorage so that it's ready to use for next time
       const storedProjects = JSON.parse(localStorage.getItem("allProjects"));
       if (storedProjects) {
         console.log("Found stored projects:", storedProjects);
         allProjects = storedProjects.map((project) => {
+          //JSON converts every instance as a plain object hence discards all class methods so i'm converting regular objects back as an instance so that it gets back it's defined methods
           const todos = project.todos.map((todo) =>
             Object.assign(new Todo(), todo),
           );
@@ -39,6 +56,8 @@ const logic = (function () {
       localStorage.setItem("allProjects", JSON.stringify(allProjects));
     }
   }
+
+  //retrieve allProjects whenever webapp opens (if present)
   syncStorage("load");
 
   const getAllTodos = () => allProjects.flatMap((project) => project.todos);
@@ -79,12 +98,8 @@ const logic = (function () {
 
   function deleteProject(pid) {
     console.log("Before deletion:", allProjects);
-
     allProjects = allProjects.filter((project) => project.pid !== pid);
-    console.log("After deletion:", allProjects);
     syncStorage("save");
-    console.log(allProjects);
-    console.log(logic.allProjects);
   }
 
   function identifyProject(tid) {

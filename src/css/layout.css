@@ -1,4 +1,7 @@
 @import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 :root {
   --bg-color-white: rgb(254, 252, 254);
@@ -25,6 +28,9 @@ body.dark {
   --footer-color: var(--footer-color-dark);
 }
 body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
   button {
     cursor: pointer;
   }
@@ -70,6 +76,9 @@ body {
       }
       div + div {
         font-size: 3rem;
+        font-family: "Roboto Condensed";
+        font-weight: 800;
+        font-style: normal;
 
         span {
           color: green;
@@ -93,6 +102,9 @@ body {
     background-color: var(--sidebar-color);
     grid-area: sidebar;
     padding: 25px;
+    .active {
+      background-color: green;
+    }
     #__section_1 {
       h2 {
         font-size: 2rem;
@@ -101,6 +113,9 @@ body {
         border-color: var(--txt-color);
       }
       .data-name {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
         font-size: 1.5rem;
       }
       #__all_tasks {
@@ -109,6 +124,7 @@ body {
       display: grid;
       gap: 10px;
       .section1-flex {
+        border-radius: 5px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -119,6 +135,11 @@ body {
           width: 30px;
           height: auto;
         }
+      }
+      .section1-flex:active,
+      .section1-flex:focus,
+      .section1-flex:hover {
+        background: var(--bg-color);
       }
     }
     #__section_2 {
@@ -148,6 +169,10 @@ body {
         display: grid;
         gap: 10px;
         .project {
+          font-family: "Montserrat";
+          font-weight: 500;
+          font-style: normal;
+          font-size: 1.3rem;
           cursor: pointer;
           display: flex;
           justify-content: space-between;
@@ -163,6 +188,11 @@ body {
               color: var(--txt-color);
             }
           }
+        }
+        .project:active,
+        .project:hover,
+        .project:focus {
+          background: var(--bg-color);
         }
       }
     }
@@ -182,11 +212,26 @@ body {
       justify-content: center;
       #__main_header {
         color: var(--txt-color);
-        font-size: 3rem;
         text-align: center;
+        font-size: 3rem;
+        font-weight: 800;
+        font-family: "Roboto";
+        font-style: italic;
       }
     }
+    .empty-dom {
+      background-image: url("/src/assets/empty.jpg");
+      height: 90%;
+      margin-top: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
     #__todo_list {
+      font-size: 1.1rem;
+      font-weight: 500;
+      font-family: "Montserrat";
+      font-style: normal;
       .todo-completed {
         text-decoration: line-through;
         color: grey;
@@ -217,12 +262,14 @@ body {
         height: 3rem;
 
         .todo-date {
-          width: 220px;
+          flex-basis: 40%;
+          flex-shrink: 0;
           text-align: left;
         }
 
         .todo-title {
           flex-grow: 1;
+          flex-shrink: 0;
         }
         .todo-complete-btn {
           border-radius: 50%;
@@ -283,8 +330,9 @@ body {
   #__floating_button {
     position: absolute;
     width: 50px;
-    background-color: var(--bg-color);
-    bottom: 5%;
+    height: 0;
+    background-color: var(--sidebar-color);
+    top: 10%;
     right: 5%;
     border: none;
   }
@@ -305,6 +353,10 @@ body {
         display: flex;
         justify-items: flex-start;
         label {
+          font-style: normal;
+          font-size: 1rem;
+          font-weight: 500;
+          font-family: "Montserrat";
           width: 100px;
           flex-shrink: 0;
         }
@@ -317,12 +369,21 @@ body {
   #__project_dialog {
     form {
       div {
+        font-style: normal;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: "Montserrat";
         margin-top: 10px;
       }
     }
   }
 
   #__view_todo_dialog {
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Montserrat";
+
     .fa-regular {
       cursor: pointer;
       border-radius: 2px;
