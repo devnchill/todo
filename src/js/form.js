@@ -42,7 +42,9 @@ const inputHandling = (function () {
       formData.entries(),
     );
     //converting the obtained object to a regular object using deconstructuring to be able to perform operations on it
+    console.log("raw date taken from input form", date);
     date = format(new Date(date), "do MMMM, yyyy");
+    console.log("formatted date ",date);
     const priorityMap = {
       0: "low",
       50: "medium",
