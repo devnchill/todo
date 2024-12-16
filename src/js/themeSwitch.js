@@ -20,12 +20,14 @@ themeSwitcher.addEventListener("click", () => {
 });
 const DOM = document.getElementById("__todo_list");
 
-document.body.addEventListener("click", () => {
+// Function to check and toggle `empty-dom` class
+function updateEmptyState() {
   if (DOM.children.length === 0) {
     DOM.classList.add("empty-dom");
   } else {
     DOM.classList.remove("empty-dom");
   }
-});
+}
+window.addEventListener("load", updateEmptyState);
+export { updateEmptyState };
 
-window.addEventListener("load", DOM.classList.add("empty-dom"));

@@ -1,9 +1,10 @@
 import { logic } from "../logic";
 import { inputHandling } from "../form";
+import { updateEmptyState } from "../themeSwitch";
 import { dom } from "../dom";
 
 const listenersToTodo = () => {
-  const TODOLIST = document.getElementById("__todo_list");
+  const DOM = document.getElementById("__todo_list");
   const ADDTODO = document.getElementById("__floating_button");
   const TODOFORM = document.getElementById("__todo_form");
   const CANCELTODO = document.getElementById("__todo_cancel_btn_form");
@@ -17,7 +18,7 @@ const listenersToTodo = () => {
     "__todo_edit_cancel_btn_form",
   );
 
-  TODOLIST.addEventListener("click", (e) => {
+  DOM.addEventListener("click", (e) => {
     const starIcon = e.target.closest(".important-star");
     const todoItem = e.target.closest(".todo");
     const completeButton = e.target.closest(".todo-complete-btn");
@@ -49,8 +50,10 @@ const listenersToTodo = () => {
       logic.deleteTodo(tid);
       if (MAINHEADER.textContent === "All Task") {
         dom.displayAllTodos();
+        updateEmptyState();
       } else {
         dom.displayTodoOfClickedProject(pid);
+        updateEmptyState();
       }
     } else if (
       (todoItem && e.target.classList.contains("todo-title")) ||
@@ -64,11 +67,13 @@ const listenersToTodo = () => {
       const todo = logic.findTodoByTid(tid);
       inputHandling.viewTodo(todo);
       VIEWDIALOG.showModal();
+      updateEmptyState();
     }
   });
 
   ADDTODO.addEventListener("click", () => {
     inputHandling.openTodoDialog();
+    updateEmptyState();
   });
 
   TODOFORM.addEventListener("submit", (e) => {
@@ -79,15 +84,18 @@ const listenersToTodo = () => {
     );
     dom.displayTodoOfClickedProject(Number(ADDTODO.dataset.id));
     inputHandling.closeTodoDialog(e.target);
+    updateEmptyState();
   });
 
   CANCELTODO.addEventListener("click", (e) => {
     e.preventDefault();
     inputHandling.closeTodoDialog();
+    updateEmptyState();
   });
 
   CLOSEVIEWTODODIALOGICON.addEventListener("click", () => {
     VIEWDIALOG.close();
+    updateEmptyState();
   });
 
   EDITTODOBUTTON.addEventListener("click", (e) => {
@@ -96,6 +104,7 @@ const listenersToTodo = () => {
     const tid = Number(e.target.dataset.tid);
     const todo = logic.findTodoByTid(tid);
     inputHandling.openEditForm(todo);
+    updateEmptyState();
   });
 
   TODOEDITFORM.addEventListener("submit", (e) => {

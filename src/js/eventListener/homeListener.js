@@ -1,4 +1,5 @@
 import { dom } from "../dom";
+import { updateEmptyState } from "../themeSwitch";
 
 const listenersToHome = () => {
   const SECTION1 = document.getElementById("__section_1");
@@ -14,6 +15,7 @@ const listenersToHome = () => {
     } else if (targetClass && targetClass.id === "__important") {
       dom.displayImportantTodos();
     }
+      updateEmptyState();
   });
 };
 export { listenersToHome };
