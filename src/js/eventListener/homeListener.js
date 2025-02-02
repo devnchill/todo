@@ -15,7 +15,7 @@ const listenersToHome = () => {
     } else if (targetClass && targetClass.id === "__important") {
       dom.displayImportantTodos();
     }
-      updateEmptyState();
+    updateEmptyState();
   });
 };
 export { listenersToHome };
